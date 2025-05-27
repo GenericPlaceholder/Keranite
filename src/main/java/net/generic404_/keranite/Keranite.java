@@ -3,6 +3,7 @@ package net.generic404_.keranite;
 import net.fabricmc.api.ModInitializer;
 
 import net.generic404_.keranite.block.ModBlocks;
+import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.item.ModItemGroups;
 import net.generic404_.keranite.item.ModItems;
 import org.slf4j.Logger;
@@ -27,5 +28,6 @@ public class Keranite implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModEffects.registerModEffects();
 	}
 }

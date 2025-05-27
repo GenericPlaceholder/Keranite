@@ -4,10 +4,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.minecraft.world.border.WorldBorder;
 
 public class MinorAnchor extends Item {
     public MinorAnchor(Settings settings) {
@@ -16,8 +16,14 @@ public class MinorAnchor extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if(world.isClient()) {
-            user.sendMessage(Text.literal("make this create a world border type thing like charter's, except no killing.\njust have it keep people in and out for a set time."));
+        // should make a new world border around the activation spot
+        if(!world.isClient()){
+            WorldBorder border = new WorldBorder();
+            border.setCenter(user.getX(), user.getZ());
+            border.setDamagePerBlock(0);
+            border.setSize(100d);
+            border.setWarningBlocks(0);
+            border.setWarningTime(0);
         }
         user.getItemCooldownManager().set(this, 200);
         user.incrementStat(Stats.USED.getOrCreateStat(this));

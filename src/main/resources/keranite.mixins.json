@@ -3,7 +3,7 @@
 	"package": "net.generic404_.keranite.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+      "NoSprint"
 	],
 	"injectors": {
 		"defaultRequire": 1
