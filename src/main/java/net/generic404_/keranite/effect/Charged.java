@@ -26,6 +26,7 @@ public class Charged extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         assert entity.isAlive();
+        // this will probably be replaced by a mixin. keeping it here for now.
         //if(entity.isSprinting()) {
         //    entity.setSprinting(false);
         //}

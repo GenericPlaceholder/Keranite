@@ -16,8 +16,8 @@ public abstract class NoSprint {
 
 
 
-	//@Inject(method="onKey",at = @At("HEAD"), cancellable = true)
-	//public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo callbackInfo) {
-    //    Keranite.LOGGER.info(String.valueOf(scancode));
-	//}
+	@Inject(method="onKey",at = @At("HEAD"), cancellable = true)
+	public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo callbackInfo) {
+        //Keranite.LOGGER.info(String.valueOf(scancode));
+	}
 }

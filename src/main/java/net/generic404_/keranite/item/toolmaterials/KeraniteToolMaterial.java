@@ -36,4 +36,6 @@ public class KeraniteToolMaterial implements ToolMaterial {
     public Ingredient getRepairIngredient() {
         return Ingredient.ofItems(ModItems.KERANITE_INGOT);
     }
+
+    public static void initialize() {}
 }
