@@ -16,7 +16,7 @@ public class ModItems {
 	public static final Item KERANITE_INGOT = registerItem("keranite_ingot", new Item(new FabricItemSettings().fireproof()));
 	public static final Item RAW_KERANITE = registerItem("raw_keranite", new Item(new FabricItemSettings().fireproof()));
 	public static final Item MINOR_KERANITE_ANCHOR = registerItem("minor_keranite_anchor", new MinorAnchor(new Item.Settings().fireproof().maxCount(8)));
-	public static final Item KERANITE_BROADSWORD = registerItem("keranite_broadsword", new Broadsword(new Item.Settings().maxDamage(10)));
+	public static final Item KERANITE_BROADSWORD = registerItem("keranite_broadsword", new Broadsword(new Item.Settings().fireproof()));
 
 	private static void addItemsToTabIng(FabricItemGroupEntries entries){
 		entries.add(KERANITE_INGOT);
@@ -32,8 +32,6 @@ public class ModItems {
 	}
 
 	public static void registerModItems(){
-		Keranite.LOGGER.info("Registering Mod Items for " + Keranite.MOD_ID + ".");
-
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToTabIng);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToTabCom);
 	}

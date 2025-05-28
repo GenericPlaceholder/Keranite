@@ -17,12 +17,12 @@
       "scale": [1.7, 1.7, 0.95]
     },
     "firstperson_righthand": {
-      "rotation": [0, -90, 45],
+      "rotation": [-10, -90, 45],
       "translation": [1, 5, 0.25],
       "scale": [1.5, 1.5, 0.8]
     },
     "firstperson_lefthand": {
-      "rotation": [0, 90, -45],
+      "rotation": [-10, 90, -45],
       "translation": [1, 5, 0.25],
       "scale": [1.5, 1.5, 0.8]
     },
