@@ -1,18 +1,14 @@
 package net.generic404_.keranite.item.usable;
 
-import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.world.Border;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.command.WorldBorderCommand;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.world.border.WorldBorder;
-import net.minecraft.world.border.WorldBorderListener;
-import net.minecraft.world.border.WorldBorderStage;
 
 public class MinorAnchor extends Item {
     public MinorAnchor(Settings settings) {

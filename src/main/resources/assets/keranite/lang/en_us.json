@@ -5,5 +5,7 @@
   "item.keranite.minor_keranite_anchor": "Minor Keranite Anchor",
   "item.keranite.keranite_broadsword": "Keranite Broadsword",
   "enchantment.keranite.conductor": "Conductor",
-  "enchantment.keranite.callback": "Callback"
+  "enchantment.keranite.callback": "Callback",
+  "enchantment.keranite.discharge": "Discharge",
+  "death.attack.discharged": "%1$s couldn't handle the electric discharge."
 }

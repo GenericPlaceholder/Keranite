@@ -20,6 +20,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerSmelting(exporter, KERANITE_SMELTABLES, RecipeCategory.MISC, ModItems.KERANITE_INGOT,
-                5f, 1000, "keranite");
+                5f, 500, "keranite");
     }
 }

@@ -1,15 +1,10 @@
 package net.generic404_.keranite.effect;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.nbt.NbtCompound;
 
 public class Charged extends StatusEffect {
     protected Charged(StatusEffectCategory category, int color) {
@@ -26,10 +21,8 @@ public class Charged extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         assert entity.isAlive();
-        // this will probably be replaced by a mixin. keeping it here for now.
-        //if(entity.isSprinting()) {
-        //    entity.setSprinting(false);
-        //}
+        // eventually, this effect should disable sprinting.
+        // see: mixin/NoSprint.java
         entity.disablesShield();
         entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS));
     }

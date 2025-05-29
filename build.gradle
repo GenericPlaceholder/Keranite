@@ -37,7 +37,7 @@ dependencies {
 
 	// Reach attributes.
 	//modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.minecraft_version}"
-	modImplementation(files("libs/reach-entity-attributes-2.4.0.jar"))
+	//modImplementation(files("libs/reach-entity-attributes-2.4.0.jar"))
 }
 
 processResources {

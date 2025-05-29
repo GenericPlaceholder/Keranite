@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class ModEnchantments {
     public static final Enchantment CONDUCTOR = registerEnchant("conductor", new Conductor());
-    public static final Enchantment CALLBACK = registerEnchant("callback", new Callback());
+    public static final Enchantment DISCHARGE = registerEnchant("discharge", new Discharge());
 
     private static Enchantment registerEnchant(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(Keranite.MOD_ID, name), enchantment);
