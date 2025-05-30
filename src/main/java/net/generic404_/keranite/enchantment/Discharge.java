@@ -2,6 +2,7 @@ package net.generic404_.keranite.enchantment;
 
 import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.damagetype.ModDamageTypes;
+import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -38,9 +39,12 @@ public class Discharge extends Enchantment {
 
         ArrayList<MobEntity> newEntityList = new ArrayList<>();
         if(entityList.size()>3){
-            newEntityList.add(entityList.get(0));
-            newEntityList.add(entityList.get(1));
-            newEntityList.add(entityList.get(2));
+            for(int i=0;i<3;i++){
+                int rand = RandomUtil.getRandom(0,entityList.size()-1);
+                newEntityList.add(entityList.get(rand));
+                // gotta make it remove the already damaged guy.
+                //newEntityList.remove(rand);
+            }
         }else{
             newEntityList = (ArrayList<MobEntity>) entityList;
         }

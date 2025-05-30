@@ -24,7 +24,7 @@ public class Shocked extends StatusEffect {
         assert entity.isAlive();
         if(entity.isPlayer()){
             Random rand = new Random();
-            int max = 3;
+            int max = 3*amplifier+3;
             int min = max*-1;
             entity.setYaw(entity.getYaw()+rand.nextInt((max-min)+1)+min);
             entity.setPitch(entity.getPitch()+rand.nextInt((max-min)+1)+min);

@@ -21,6 +21,9 @@ public class CallbackToken extends Item {
     float savedyaw = 0;
     float savedpitch = 0;
 
+    // this is awful.
+    // make it nbt based or smth
+    // also, consider making it only save position.
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         if (world.isClient) {
             if (savedpos == null) {
@@ -30,11 +33,15 @@ public class CallbackToken extends Item {
                 savedpitch = user.getPitch();
                 savedvelo = user.getVelocity();
             } else {
-                user.sendMessage(Text.of("[ Position Loaded ]"));
-                user.setPosition(savedpos);
-                user.setYaw(savedyaw);
-                user.setPitch(savedpitch);
-                user.setVelocity(savedvelo);
+                if(user.squaredDistanceTo(savedpos)<2500) {
+                    user.sendMessage(Text.of("[ Position Loaded ]"));
+                    user.setPosition(savedpos);
+                    user.setYaw(savedyaw);
+                    user.setPitch(savedpitch);
+                    user.setVelocity(savedvelo);
+                } else {
+                    user.sendMessage(Text.of("[ Saved Position Out Of Range ]"));
+                }
                 savedpos = null;
                 user.incrementStat(Stats.USED.getOrCreateStat(this));
                 if (!user.getAbilities().creativeMode) {

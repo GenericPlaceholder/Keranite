@@ -7,7 +7,7 @@
   "overrides": [
     {
       "predicate": {
-        "amarite:gui": 0
+        "inventory_state": 0
       },
       "model": "keranite:item/keranite_broadsword_handheld"
     }

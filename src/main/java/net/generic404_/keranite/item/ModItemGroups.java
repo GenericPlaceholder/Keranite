@@ -2,6 +2,7 @@ package net.generic404_.keranite.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.generic404_.keranite.Keranite;
+import net.generic404_.keranite.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -15,13 +16,12 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.keranite"))
                     .icon(()->new ItemStack(ModItems.KERANITE_INGOT)).entries((displayContext, entries) -> {
                         //this is where you put items into the group
-                        entries.add(ModItems.KERANITE_INGOT);
                         entries.add(ModItems.RAW_KERANITE);
-                        entries.add(ModItems.MINOR_KERANITE_ANCHOR);
+                        entries.add(ModItems.KERANITE_INGOT);
+                        entries.add(ModBlocks.KERANITE_BLOCK);
                         entries.add(ModItems.KERANITE_BROADSWORD);
+                        entries.add(ModItems.KERANITE_RAPIER);
                         entries.add(ModItems.CALLBACK_TOKEN);
-                        //entries.add(ModBlocks
-
                     }).build());
 
     public static void registerItemGroups(){

@@ -5,6 +5,5 @@ import net.fabricmc.api.ClientModInitializer;
 public class KeraniteClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-
     }
 }

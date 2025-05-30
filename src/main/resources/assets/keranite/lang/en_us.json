@@ -3,9 +3,15 @@
   "item.keranite.keranite_ingot": "Keranite Ingot",
   "item.keranite.raw_keranite": "Raw Keranite",
   "item.keranite.minor_keranite_anchor": "Minor Keranite Anchor",
+
   "item.keranite.keranite_broadsword": "Keranite Broadsword",
+  "item.keranite.keranite_rapier": "Keranite Rapier",
+
   "enchantment.keranite.conductor": "Conductor",
-  "enchantment.keranite.callback": "Callback",
+  "enchantment.keranite.conductor.desc": "Shoots a beam at an entity that inflicts them with Charged.",
   "enchantment.keranite.discharge": "Discharge",
-  "death.attack.discharged": "%1$s couldn't handle the electric discharge."
+  "enchantment.keranite.discharge.desc": "When striking an entity, additional damage is dealt to surrounding entities of the same type.",
+
+  "death.attack.discharged": "%1$s couldn't handle the electric discharge.",
+  "block.keranite.keranite_block": "Keranite Block"
 }

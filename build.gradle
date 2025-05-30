@@ -12,12 +12,12 @@ base {
 
 repositories {
 	// Reach attributes.
-	//maven {
-	//	url "https://maven.jamieswhiteshirt.com/libs-release"
-	//	content {
-	//		includeGroup "com.jamieswhiteshirt"
-	//	}
-	//}
+	maven {
+		url "https://maven.jamieswhiteshirt.com/libs-release"
+		content {
+			includeGroup "com.jamieswhiteshirt"
+		}
+	}
 }
 
 fabricApi {
@@ -36,8 +36,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Reach attributes.
-	//modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.minecraft_version}"
-	//modImplementation(files("libs/reach-entity-attributes-2.4.0.jar"))
+	modImplementation "com.jamieswhiteshirt:reach-entity-attributes:2.5.0"
 }
 
 processResources {
