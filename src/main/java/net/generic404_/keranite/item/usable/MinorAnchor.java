@@ -1,13 +1,11 @@
 package net.generic404_.keranite.item.usable;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 
 public class MinorAnchor extends Item {
@@ -18,7 +16,7 @@ public class MinorAnchor extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        VoxelShape FLAT_SHAPE = Block.createCuboidShape(0,8,0,16,8.01,16);
+//        new ParticleWallTask((ServerWorld) user.getWorld(), (List<BlockPos>) );
 
         user.getItemCooldownManager().set(this, 200);
         user.incrementStat(Stats.USED.getOrCreateStat(this));

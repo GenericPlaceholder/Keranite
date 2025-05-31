@@ -18,7 +18,7 @@ public class ModItems {
 	public static final Item KERANITE_INGOT = registerItem("keranite_ingot", new Item(new FabricItemSettings().fireproof()));
 	public static final Item RAW_KERANITE = registerItem("raw_keranite", new Item(new FabricItemSettings().fireproof()));
 	public static final Item MINOR_KERANITE_ANCHOR = registerItem("minor_keranite_anchor", new MinorAnchor(new Item.Settings().fireproof().maxCount(8)));
-	public static final Item CALLBACK_TOKEN = registerItem("callback_token", new CallbackToken(new Item.Settings().maxCount(16).fireproof()));
+	public static final Item CALLBACK_TOKEN = registerItem("callback_token", new CallbackToken(new Item.Settings().maxCount(1).fireproof()));
 
 	public static final Item KERANITE_BROADSWORD = registerItem("keranite_broadsword", new Broadsword(new Item.Settings().fireproof()));
 	public static final Item KERANITE_RAPIER = registerItem("keranite_rapier", new Rapier(new Item.Settings().fireproof()));

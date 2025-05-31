@@ -1,45 +1,20 @@
 {
-  "credit": "i reverse engineered amarite's stuff",
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/keranite_broadsword"
+    "layer0": "keranite:item/keranite_broadsword_gui"
   },
-  "gui_light": "front",
-  "display": {
-    "thirdperson_righthand": {
-      "rotation": [0, -90, 45],
-      "translation": [0, 8, 0],
-      "scale": [1.7, 1.7, 0.95]
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 0
+      },
+      "model": "keranite:item/keranite_broadsword_handheld"
     },
-    "thirdperson_lefthand": {
-      "rotation": [0, 90, -45],
-      "translation": [0, 8, 0],
-      "scale": [1.7, 1.7, 0.95]
-    },
-    "firstperson_righthand": {
-      "rotation": [-10, -90, 45],
-      "translation": [1, 5, 0.25],
-      "scale": [1.5, 1.5, 0.8]
-    },
-    "firstperson_lefthand": {
-      "rotation": [-10, 90, -45],
-      "translation": [1, 5, 0.25],
-      "scale": [1.5, 1.5, 0.8]
-    },
-    "ground": {
-      "translation": [1.25, 7, 0]
-    },
-    "gui": {
-      "translation": [0, 0, 0],
-      "scale": [1, 1, 1]
-    },
-    "head": {
-      "rotation": [0, 90, 45],
-      "translation": [0, 21.25, 0],
-      "scale": [2, 2, 2]
-    },
-    "fixed": {
-      "translation": [2, 2, 0]
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "keranite:item/keranite_broadsword_handheld_charged"
     }
-  }
+  ]
 }

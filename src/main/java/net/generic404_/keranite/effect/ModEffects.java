@@ -15,7 +15,5 @@ public class ModEffects {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(Keranite.MOD_ID, name), effect);
     }
 
-    public static void registerModEffects() {
-        Keranite.LOGGER.info("Registering Mod Effects for " + Keranite.MOD_ID + ".");
-    }
+    public static void registerModEffects() {}
 }

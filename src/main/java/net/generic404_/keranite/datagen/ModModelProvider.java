@@ -23,6 +23,5 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.KERANITE_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_KERANITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINOR_KERANITE_ANCHOR, Models.GENERATED);
-        itemModelGenerator.register(ModItems.CALLBACK_TOKEN, Models.GENERATED);
     }
 }

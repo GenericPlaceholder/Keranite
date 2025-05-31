@@ -1,14 +1,15 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/keranite_broadsword_gui"
+    "layer0": "keranite:item/callback_token",
+    "layer1": "keranite:item/callback_token_empty"
   },
   "overrides": [
     {
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "keranite:item/keranite_broadsword_handheld"
+      "model": "keranite:item/callbacktoken_charged"
     }
   ]
 }

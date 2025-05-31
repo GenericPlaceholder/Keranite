@@ -8,10 +8,11 @@
   "item.keranite.keranite_rapier": "Keranite Rapier",
 
   "enchantment.keranite.conductor": "Conductor",
-  "enchantment.keranite.conductor.desc": "Shoots a beam at an entity that inflicts them with Charged.",
+  "enchantment.keranite.conductor.desc": "After dealing 20 attacks or 10 crits, you can activate a one use stronger attack.",
   "enchantment.keranite.discharge": "Discharge",
   "enchantment.keranite.discharge.desc": "When striking an entity, additional damage is dealt to surrounding entities of the same type.",
 
   "death.attack.discharged": "%1$s couldn't handle the electric discharge.",
+
   "block.keranite.keranite_block": "Keranite Block"
 }
