@@ -21,7 +21,7 @@ public class Rapier extends SwordItem {
     protected static final UUID ATTACKREACH_MODIFIER_UUID = UUID.fromString("a92256bc-0efa-47ed-aab1-adea724a852c");
     protected static final UUID REACH_MODIFIER_UUID = UUID.fromString("603cbd44-8360-4df7-b10a-2670a4414694");
     public Rapier(Settings settings) {
-        super(KeraniteToolMaterial.INSTANCE, 7, (1.3f - 4f), settings);
+        super(KeraniteToolMaterial.KERANITE, 7, (1.3f - 4f), settings);
     }
 
     @Override
@@ -33,11 +33,18 @@ public class Rapier extends SwordItem {
         return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getAttributeModifiers(slot);
     }
 
+    // make the actual sword do more damage during elytra flight, i mean attack damage
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        if(!user.isFallFlying()) {
             user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1)));
             user.fallDistance = -3;
             user.getItemCooldownManager().set(this, 50);
-            return TypedActionResult.consume(user.getStackInHand(hand));
+        }else{
+            user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1.5)));
+            user.getItemCooldownManager().set(this, 100);
+        }
+        return TypedActionResult.consume(user.getStackInHand(hand));
     }
 }

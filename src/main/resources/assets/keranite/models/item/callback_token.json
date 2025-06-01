@@ -9,7 +9,7 @@
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "keranite:item/callbacktoken_charged"
+      "model": "keranite:item/callback_token_charged"
     }
   ]
 }

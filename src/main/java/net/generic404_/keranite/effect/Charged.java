@@ -24,6 +24,14 @@ public class Charged extends StatusEffect {
         // eventually, this effect should disable sprinting.
         // see: mixin/NoSprint.java
         entity.disablesShield();
-        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS));
+        if(entity.isFallFlying()){
+            if(entity.getVelocity().y<=0) {
+                entity.setVelocity(0, entity.getVelocity().y-0.1d, 0);
+                entity.fallDistance = -1f;
+            }else{
+                entity.setVelocity(0,0,0);
+            }
+        }
+        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,20,0,false,false,false));
     }
 }

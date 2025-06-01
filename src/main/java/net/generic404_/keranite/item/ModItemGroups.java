@@ -19,9 +19,16 @@ public class ModItemGroups {
                         entries.add(ModItems.RAW_KERANITE);
                         entries.add(ModItems.KERANITE_INGOT);
                         entries.add(ModBlocks.KERANITE_BLOCK);
+
+                        entries.add(ModItems.CALLBACK_TOKEN);
+
                         entries.add(ModItems.KERANITE_BROADSWORD);
                         entries.add(ModItems.KERANITE_RAPIER);
-                        entries.add(ModItems.CALLBACK_TOKEN);
+
+                        entries.add(ModItems.LIGHT_HELMET);
+                        entries.add(ModItems.LIGHT_CHESTPLATE);
+                        entries.add(ModItems.LIGHT_LEGGINGS);
+                        entries.add(ModItems.LIGHT_BOOTS);
                     }).build());
 
     public static void registerItemGroups(){

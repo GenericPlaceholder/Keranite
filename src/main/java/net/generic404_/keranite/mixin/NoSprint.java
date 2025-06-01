@@ -1,8 +1,8 @@
 package net.generic404_.keranite.mixin;
 
-import net.generic404_.keranite.Keranite;
 import net.minecraft.client.Keyboard;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,6 +18,12 @@ public abstract class NoSprint {
 
 	@Inject(method="onKey",at = @At("HEAD"), cancellable = true)
 	public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo callbackInfo) {
-        //Keranite.LOGGER.info(String.valueOf(scancode));
+		MinecraftClient client = MinecraftClient.getInstance();
+		KeyBinding sprint = client.options.sprintKey;
+		/*if(sprint.isPressed()){
+			sprint.setPressed(false);
+			KeyBinding.unpressAll();
+			callbackInfo.cancel();
+        }*/
 	}
 }

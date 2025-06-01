@@ -23,7 +23,7 @@ public class Broadsword extends SwordItem {
     protected static final UUID REACH_MODIFIER_UUID = UUID.fromString("fbae5e27-a72a-4193-8fb8-042f60cc7568");
 
     public Broadsword(Settings settings) {
-        super(KeraniteToolMaterial.INSTANCE, 12, (0.8f - 4f), settings);
+        super(KeraniteToolMaterial.KERANITE, 13, (0.8f - 4f), settings);
     }
 
     @Override

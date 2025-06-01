@@ -7,6 +7,7 @@ import net.generic404_.keranite.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.item.ArmorItem;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -23,5 +24,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.KERANITE_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_KERANITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINOR_KERANITE_ANCHOR, Models.GENERATED);
+
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_HELMET));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_BOOTS));
     }
 }

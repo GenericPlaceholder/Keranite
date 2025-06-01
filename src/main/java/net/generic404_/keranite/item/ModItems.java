@@ -8,6 +8,7 @@ import net.generic404_.keranite.item.usable.CallbackToken;
 import net.generic404_.keranite.item.usable.MinorAnchor;
 import net.generic404_.keranite.item.weapons.Broadsword;
 import net.generic404_.keranite.item.weapons.Rapier;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -22,6 +23,11 @@ public class ModItems {
 
 	public static final Item KERANITE_BROADSWORD = registerItem("keranite_broadsword", new Broadsword(new Item.Settings().fireproof()));
 	public static final Item KERANITE_RAPIER = registerItem("keranite_rapier", new Rapier(new Item.Settings().fireproof()));
+
+	public static final Item LIGHT_HELMET = registerItem("light_helmet", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.HELMET, new FabricItemSettings()));
+	public static final Item LIGHT_CHESTPLATE = registerItem("light_chestplate", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+	public static final Item LIGHT_LEGGINGS = registerItem("light_leggings", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+	public static final Item LIGHT_BOOTS = registerItem("light_boots", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
 	private static void addItemsToTabIng(FabricItemGroupEntries entries){
 		entries.add(KERANITE_INGOT);

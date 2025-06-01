@@ -3,9 +3,15 @@
   "item.keranite.keranite_ingot": "Keranite Ingot",
   "item.keranite.raw_keranite": "Raw Keranite",
   "item.keranite.minor_keranite_anchor": "Minor Keranite Anchor",
+  "item.keranite.callback_token": "Callback Token",
 
   "item.keranite.keranite_broadsword": "Keranite Broadsword",
   "item.keranite.keranite_rapier": "Keranite Rapier",
+
+  "item.keranite.light_helmet": "Keranite Helmet",
+  "item.keranite.light_chestplate": "Keranite Chestplate",
+  "item.keranite.light_leggings": "Keranite Leggings",
+  "item.keranite.light_boots": "Keranite Boots",
 
   "enchantment.keranite.conductor": "Conductor",
   "enchantment.keranite.conductor.desc": "After dealing 20 attacks or 10 crits, you can activate a one use stronger attack.",
