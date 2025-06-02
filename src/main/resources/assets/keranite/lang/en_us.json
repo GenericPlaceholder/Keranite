@@ -8,17 +8,27 @@
   "item.keranite.keranite_broadsword": "Keranite Broadsword",
   "item.keranite.keranite_rapier": "Keranite Rapier",
 
-  "item.keranite.light_helmet": "Keranite Helmet",
-  "item.keranite.light_chestplate": "Keranite Chestplate",
-  "item.keranite.light_leggings": "Keranite Leggings",
-  "item.keranite.light_boots": "Keranite Boots",
+  "item.keranite.light_helmet": "Light Keranite Helmet",
+  "item.keranite.light_chestplate": "Light Keranite Chestplate",
+  "item.keranite.light_leggings": "Light Keranite Leggings",
+  "item.keranite.light_boots": "Light Keranite Boots",
+
+  "item.keranite.heavy_helmet": "Keranite Helmet",
+  "item.keranite.heavy_chestplate": "Keranite Chestplate",
+  "item.keranite.heavy_leggings": "Keranite Leggings",
+  "item.keranite.heavy_boots": "Keranite Boots",
 
   "enchantment.keranite.conductor": "Conductor",
-  "enchantment.keranite.conductor.desc": "After dealing 20 attacks or 10 crits, you can activate a one use stronger attack.",
+  "enchantment.keranite.conductor.desc": "After dealing 10 attacks or 5 crits, you can activate a one use stronger attack.",
   "enchantment.keranite.discharge": "Discharge",
   "enchantment.keranite.discharge.desc": "When striking an entity, additional damage is dealt to surrounding entities of the same type.",
+  "enchantment.keranite.vanish": "Vanish",
+  "enchantment.keranite.vanish.desc": "temp vanish desc",
+  "enchantment.keranite.shockwave": "Shockwave",
+  "enchantment.keranite.shockwave.desc": "Replaces your backdash with a powerful shockwave.",
 
   "death.attack.discharged": "%1$s couldn't handle the electric discharge.",
+  "death.attack.shockwave": "%1$s was killed by a shockwave.",
 
   "block.keranite.keranite_block": "Keranite Block"
 }

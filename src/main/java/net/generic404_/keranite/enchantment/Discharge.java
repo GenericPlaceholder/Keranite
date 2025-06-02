@@ -1,18 +1,18 @@
 package net.generic404_.keranite.enchantment;
 
-import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.damagetype.ModDamageTypes;
+import net.generic404_.keranite.item.ModItems;
+import net.generic404_.keranite.util.NearbyEntitiesUtil;
 import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.util.math.Box;
+import net.minecraft.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Discharge extends Enchantment {
 
@@ -28,29 +28,39 @@ public class Discharge extends Enchantment {
     public int getMaxLevel() {
         return 3;
     }
+    @Override
+    public boolean isAcceptableItem(@NotNull ItemStack stack) {
+        return stack.isOf(ModItems.KERANITE_BROADSWORD)||stack.isOf(ModItems.KERANITE_RAPIER);
+    }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         super.onTargetDamaged(user, target, level);
 
-        int distanceFromPlayerMax = 6*level;
-        Box myBox = new Box(target.getBlockPos()).expand(distanceFromPlayerMax);
-        List<MobEntity> entityList = user.getWorld().getEntitiesByClass(MobEntity.class,myBox, LivingEntity::isAlive);
+//        int distanceFromPlayerMax = 6*level;
+//        Box myBox = new Box(target.getBlockPos()).expand(distanceFromPlayerMax);
+//
+//        List<Entity> oldEntityList = user.getWorld().getOtherEntities(target,myBox);
+//        ArrayList<Entity> entityList = new ArrayList<>(List.of());
+//        for(Entity ent : oldEntityList){
+//            if(ent.isAlive()&&ent.isLiving()&&ent.isAttackable()){entityList.add(ent);}
+//        }
 
-        ArrayList<MobEntity> newEntityList = new ArrayList<>();
+        ArrayList<Entity> entityList = NearbyEntitiesUtil.getNearbyEntities(user,6*level,target.getBlockPos());
+
+        ArrayList<Entity> newEntityList = new ArrayList<>();
         if(entityList.size()>3){
             for(int i=0;i<3;i++){
                 int rand = RandomUtil.getRandom(0,entityList.size()-1);
                 newEntityList.add(entityList.get(rand));
-                // gotta make it remove the already damaged guy.
+                //keeps saying length 1. what????
                 //newEntityList.remove(rand);
             }
         }else{
-            newEntityList = (ArrayList<MobEntity>) entityList;
+            newEntityList = entityList;
         }
-        for(MobEntity viewed : newEntityList){
-            viewed.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.DISCHARGED), 5);
+        for(Entity viewed : newEntityList){
+            viewed.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.DISCHARGED), 5*level);
         }
-        Keranite.LOGGER.info(String.valueOf(newEntityList));
     }
 }

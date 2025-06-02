@@ -10,6 +10,8 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
@@ -37,14 +39,35 @@ public class Rapier extends SwordItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if(!user.isFallFlying()) {
-            user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1)));
-            user.fallDistance = -3;
-            user.getItemCooldownManager().set(this, 50);
-        }else{
-            user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1.5)));
-            user.getItemCooldownManager().set(this, 100);
-        }
-        return TypedActionResult.consume(user.getStackInHand(hand));
+            NbtList enchants = user.getStackInHand(hand).getEnchantments();
+            boolean hasVanish = false;
+            boolean hasDischarge = false;
+            for (NbtElement element : enchants) {
+                for (String elment : element.toString().split("\"")) {
+                    if(elment.equals("keranite:vanish")) {
+                        hasVanish = true;
+                    }
+                    if(elment.equals("keranite:discharge")) {
+                        hasDischarge = true;
+                    }
+                }
+            }
+            if (!hasVanish) {
+                if (!user.isFallFlying()) {
+                    user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1)));
+                    user.fallDistance = -3;
+                    user.getItemCooldownManager().set(this, 50);
+                } else {
+                    user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1.5)));
+                    user.getItemCooldownManager().set(this, 100);
+                }
+                return TypedActionResult.consume(user.getStackInHand(hand));
+            } else if (hasVanish) {
+                user.setVelocity(0, 0.2, 0);
+                user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));
+                user.getItemCooldownManager().set(this, 250);
+                return TypedActionResult.consume(user.getStackInHand(hand));
+            }
+        return TypedActionResult.pass(user.getStackInHand(hand));
     }
 }

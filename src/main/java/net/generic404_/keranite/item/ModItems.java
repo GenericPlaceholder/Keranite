@@ -29,6 +29,11 @@ public class ModItems {
 	public static final Item LIGHT_LEGGINGS = registerItem("light_leggings", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
 	public static final Item LIGHT_BOOTS = registerItem("light_boots", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
+	public static final Item HEAVY_HELMET = registerItem("heavy_helmet", new KeraniteArmorItem(KeraniteArmorMaterials.HEAVY, ArmorItem.Type.HELMET, new FabricItemSettings()));
+	public static final Item HEAVY_CHESTPLATE = registerItem("heavy_chestplate", new KeraniteArmorItem(KeraniteArmorMaterials.HEAVY, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+	public static final Item HEAVY_LEGGINGS = registerItem("heavy_leggings", new KeraniteArmorItem(KeraniteArmorMaterials.HEAVY, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+	public static final Item HEAVY_BOOTS = registerItem("heavy_boots", new KeraniteArmorItem(KeraniteArmorMaterials.HEAVY, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
 	private static void addItemsToTabIng(FabricItemGroupEntries entries){
 		entries.add(KERANITE_INGOT);
 		entries.add(RAW_KERANITE);

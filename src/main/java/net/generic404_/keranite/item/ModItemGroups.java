@@ -29,6 +29,11 @@ public class ModItemGroups {
                         entries.add(ModItems.LIGHT_CHESTPLATE);
                         entries.add(ModItems.LIGHT_LEGGINGS);
                         entries.add(ModItems.LIGHT_BOOTS);
+
+                        entries.add(ModItems.HEAVY_HELMET);
+                        entries.add(ModItems.HEAVY_CHESTPLATE);
+                        entries.add(ModItems.HEAVY_LEGGINGS);
+                        entries.add(ModItems.HEAVY_BOOTS);
                     }).build());
 
     public static void registerItemGroups(){

@@ -3,7 +3,10 @@ package net.generic404_.keranite.item.weapons;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
+import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
+import net.generic404_.keranite.util.NearbyEntitiesUtil;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -16,6 +19,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Broadsword extends SwordItem {
@@ -45,14 +49,18 @@ public class Broadsword extends SwordItem {
         String enchantz = user.getStackInHand(hand).getEnchantments().toString();
         String[] enchants = enchantz.split("\"");
         boolean hasConduct = false;
+        boolean hasShockwave = false;
         for (String enchant : enchants) {
             if (enchant.equals("keranite:conductor")) {
                 hasConduct = true;
             }
+            if (enchant.equals("keranite:shockwave")) {
+                hasShockwave = true;
+            }
         }
         if (hasConduct) {
             NbtCompound tag = user.getStackInHand(hand).getOrCreateNbt();
-            int maxmeter = 20;
+            int maxmeter = 10;
             if(!tag.getBoolean("charged") &&tag.getInt("meter")>=maxmeter) {
                 tag.putBoolean("charged", true);
 //            EntityHitResult raycat = RaycastUtil.raycastEntities(user, 5d);
@@ -65,6 +73,21 @@ public class Broadsword extends SwordItem {
             }else{
                 return TypedActionResult.pass(user.getStackInHand(hand));
             }
+        } else if(hasShockwave) {
+            if(user.isOnGround()){
+                user.setVelocity(new Vec3d(0,1,0));
+                ArrayList<Entity> entityList = NearbyEntitiesUtil.getNearbyEntities(user,5,user.getBlockPos());
+                for(Entity ent : entityList){
+                    ent.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.SHOCKWAVE), 3);
+                    ent.addVelocity(new Vec3d(0,0.5,0));
+                    ent.addVelocity(((ent.getPos().subtract(user.getPos())).multiply(6-user.distanceTo(ent))).multiply(0.15));
+                }
+            } else {
+                user.setVelocity(new Vec3d(0,-1,0));
+                user.fallDistance = -10;
+            }
+            user.getItemCooldownManager().set(this, 80);
+            return TypedActionResult.consume(user.getStackInHand(hand));
         } else {
             user.setVelocity(user.getRotationVector().multiply(new Vec3d(-1, 0, -1)));
             user.addVelocity(0,0.2,0);

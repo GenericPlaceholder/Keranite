@@ -29,5 +29,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_CHESTPLATE));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_LEGGINGS));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.LIGHT_BOOTS));
+
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HEAVY_HELMET));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HEAVY_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HEAVY_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HEAVY_BOOTS));
     }
 }
