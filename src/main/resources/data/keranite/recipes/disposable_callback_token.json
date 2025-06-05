@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " k ",
+    "krk",
+    " k "
+  ],
+  "key": {
+    "k": {
+      "item": "minecraft:iron_ingot"
+    },
+    "r": {
+      "item": "minecraft:respawn_anchor"
+    }
+  },
+  "result": {
+    "item": "keranite:disposable_callback_token",
+    "count": 4
+  },
+  "show_notification": true
+}

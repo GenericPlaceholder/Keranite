@@ -21,6 +21,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.KERANITE_BLOCK);
 
                         entries.add(ModItems.CALLBACK_TOKEN);
+                        entries.add(ModItems.DISPOSABLE_CALLBACK_TOKEN);
 
                         entries.add(ModItems.KERANITE_BROADSWORD);
                         entries.add(ModItems.KERANITE_RAPIER);

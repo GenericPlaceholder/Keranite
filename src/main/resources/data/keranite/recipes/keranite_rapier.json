@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  k",
+    " k ",
+    "s  "
+  ],
+  "key": {
+    "k": {
+      "item": "keranite:keranite_ingot"
+    },
+    "s": {
+      "item": "minecraft:netherite_sword"
+    }
+  },
+  "result": {
+    "item": "keranite:keranite_rapier",
+    "count": 1
+  },
+  "show_notification": true
+}

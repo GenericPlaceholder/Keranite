@@ -75,7 +75,7 @@ public class Broadsword extends SwordItem {
             }
         } else if(hasShockwave) {
             if(user.isOnGround()){
-                user.setVelocity(new Vec3d(0,1,0));
+                user.setVelocity(new Vec3d(0,0.75,0));
                 ArrayList<Entity> entityList = NearbyEntitiesUtil.getNearbyEntities(user,5,user.getBlockPos());
                 for(Entity ent : entityList){
                     ent.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.SHOCKWAVE), 3);

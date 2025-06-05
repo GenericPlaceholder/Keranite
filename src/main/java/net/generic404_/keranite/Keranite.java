@@ -7,6 +7,7 @@ import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.ModItemGroups;
 import net.generic404_.keranite.item.ModItems;
+import net.generic404_.keranite.projectiles.CustomProjectile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,5 +32,6 @@ public class Keranite implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModEffects.registerModEffects();
 		ModEnchantments.registerModEnchants();
+		CustomProjectile.initialize();
 	}
 }

@@ -12,7 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    public static final Block KERANITE_BLOCK = registerBlock("keranite_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK).hardness(100)));
+    public static final Block KERANITE_BLOCK = registerBlock("keranite_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK).hardness(75).luminance(15)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

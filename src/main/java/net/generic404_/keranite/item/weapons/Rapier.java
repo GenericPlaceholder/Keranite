@@ -3,10 +3,12 @@ package net.generic404_.keranite.item.weapons;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
+import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -65,6 +67,7 @@ public class Rapier extends SwordItem {
             } else if (hasVanish) {
                 user.setVelocity(0, 0.2, 0);
                 user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));
+                user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 30, 0, false, false, false));
                 user.getItemCooldownManager().set(this, 250);
                 return TypedActionResult.consume(user.getStackInHand(hand));
             }

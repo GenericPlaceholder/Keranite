@@ -12,15 +12,14 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class CallbackToken extends Item {
-    public CallbackToken(Settings settings) {
+public class DisposableCallbackToken extends Item {
+    public DisposableCallbackToken(Settings settings) {
         super(settings);
     }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack token = user.getStackInHand(hand);
-//            if (token.getNbt()!=null&&!token.getNbt().getBoolean("positionSaved")) {
-        if (user.isSneaking()||token.getNbt()!=null) {
+            if (token.getNbt()!=null&&!token.getNbt().getBoolean("positionSaved")) {
                 if(world.isClient) {
                     user.sendMessage(Text.of("[ Position Saved ]"));
                 }
@@ -33,6 +32,7 @@ public class CallbackToken extends Item {
                 token.getOrCreateNbt().putString("dimension", String.valueOf(user.getWorld().getRegistryKey().getValue()));
                 token.getOrCreateNbt().putInt("CustomModelData",1);
             } else {
+                assert Objects.requireNonNull(token.getNbt()).getString("dimension") != null;
                 if(Objects.equals(String.valueOf(user.getWorld().getRegistryKey().getValue()), token.getNbt().getString("dimension"))) {
                     if (world.isClient) {
                         user.sendMessage(Text.of("[ Position Loaded ]"));
@@ -43,6 +43,9 @@ public class CallbackToken extends Item {
                     token.getOrCreateNbt().putBoolean("positionSaved", false);
                     token.getOrCreateNbt().putInt("CustomModelData", 0);
                     user.incrementStat(Stats.USED.getOrCreateStat(this));
+                    if (!user.getAbilities().creativeMode) {
+                        user.getStackInHand(hand).decrement(1);
+                    }
                 }else{
                     if (world.isClient) {
                         user.sendMessage(Text.of("[ Position saved is in a different dimension ]"));

@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.item.usable.CallbackToken;
+import net.generic404_.keranite.item.usable.ConcussionBombItem;
+import net.generic404_.keranite.item.usable.DisposableCallbackToken;
 import net.generic404_.keranite.item.usable.MinorAnchor;
 import net.generic404_.keranite.item.weapons.Broadsword;
 import net.generic404_.keranite.item.weapons.Rapier;
@@ -18,8 +20,12 @@ import net.minecraft.util.Identifier;
 public class ModItems {
 	public static final Item KERANITE_INGOT = registerItem("keranite_ingot", new Item(new FabricItemSettings().fireproof()));
 	public static final Item RAW_KERANITE = registerItem("raw_keranite", new Item(new FabricItemSettings().fireproof()));
+
 	public static final Item MINOR_KERANITE_ANCHOR = registerItem("minor_keranite_anchor", new MinorAnchor(new Item.Settings().fireproof().maxCount(8)));
 	public static final Item CALLBACK_TOKEN = registerItem("callback_token", new CallbackToken(new Item.Settings().maxCount(1).fireproof()));
+	public static final Item DISPOSABLE_CALLBACK_TOKEN = registerItem("disposable_callback_token", new DisposableCallbackToken(new Item.Settings().maxCount(16)));
+
+	public static final Item CONCUSSION_BOMB = registerItem("concussion_bomb", new ConcussionBombItem(new Item.Settings().fireproof().maxCount(32)));
 
 	public static final Item KERANITE_BROADSWORD = registerItem("keranite_broadsword", new Broadsword(new Item.Settings().fireproof()));
 	public static final Item KERANITE_RAPIER = registerItem("keranite_rapier", new Rapier(new Item.Settings().fireproof()));
@@ -39,7 +45,9 @@ public class ModItems {
 		entries.add(RAW_KERANITE);
 	}
 	private static void addItemsToTabCom(FabricItemGroupEntries entries){
-		entries.add(MINOR_KERANITE_ANCHOR);
+		entries.add(CALLBACK_TOKEN);
+		entries.add(DISPOSABLE_CALLBACK_TOKEN);
+		entries.add(CONCUSSION_BOMB);
 		entries.add(KERANITE_BROADSWORD);
 		entries.add(KERANITE_RAPIER);
 	}
