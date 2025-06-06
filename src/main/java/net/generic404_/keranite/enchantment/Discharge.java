@@ -51,7 +51,7 @@ public class Discharge extends Enchantment {
         ArrayList<Entity> newEntityList = new ArrayList<>();
         if(entityList.size()>3){
             for(int i=0;i<3;i++){
-                int rand = RandomUtil.getRandom(0,entityList.size()-1);
+                int rand = RandomUtil.getRandomInt(0,entityList.size()-1);
                 newEntityList.add(entityList.get(rand));
                 //keeps saying length 1. what????
                 //newEntityList.remove(rand);

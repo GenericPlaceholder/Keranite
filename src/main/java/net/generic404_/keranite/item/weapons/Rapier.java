@@ -14,6 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
@@ -63,12 +65,15 @@ public class Rapier extends SwordItem {
                     user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1.5)));
                     user.getItemCooldownManager().set(this, 100);
                 }
+                world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
                 return TypedActionResult.consume(user.getStackInHand(hand));
             } else if (hasVanish) {
                 user.setVelocity(0, 0.2, 0);
                 user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));
                 user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 30, 0, false, false, false));
                 user.getItemCooldownManager().set(this, 250);
+                world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
+                world.playSoundFromEntity(null,user, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.PLAYERS,1.2f,0.9f);
                 return TypedActionResult.consume(user.getStackInHand(hand));
             }
         return TypedActionResult.pass(user.getStackInHand(hand));

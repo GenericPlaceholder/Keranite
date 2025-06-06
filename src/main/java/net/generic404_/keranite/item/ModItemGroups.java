@@ -38,7 +38,7 @@ public class ModItemGroups {
                     }).build());
 
     public static void registerItemGroups(){
-        Keranite.LOGGER.info("Registering Item Groups for " + Keranite.MOD_ID);
+
     }
 
 }

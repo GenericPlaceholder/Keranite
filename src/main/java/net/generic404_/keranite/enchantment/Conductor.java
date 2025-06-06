@@ -9,7 +9,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -33,13 +36,27 @@ public class Conductor extends Enchantment {
     }
 
     public void onTargetDamaged(@NotNull LivingEntity user, Entity target, int level) {
+        World world = user.getWorld();
         if(user.getMainHandStack().getItem()==ModItems.KERANITE_BROADSWORD&& Objects.requireNonNull(user.getMainHandStack().getNbt()).getBoolean("charged")){
             if (target instanceof LivingEntity) {
-                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(ModEffects.CHARGED, 100*level, 0));
+                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(ModEffects.CHARGED, 300*level, 0));
                 ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(ModEffects.SHOCKED, 30*level, (-1)+level));
+
                 user.getMainHandStack().getOrCreateNbt().putBoolean("charged",false);
                 user.getMainHandStack().getOrCreateNbt().putInt("meter", 0);
                 user.getMainHandStack().getOrCreateNbt().putInt("CustomModelData", 0);
+
+                // i cant figure this out gruhhhhhh
+//                Vec3d pos = target.getPos();
+//                for(int i=0;i<10;i++){
+//                world.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+//                        pos.x+RandomUtil.getRandomFloat(-0.5f,0.5f),
+//                        pos.y+RandomUtil.getRandomFloat(-1f,1f),
+//                        pos.z+RandomUtil.getRandomFloat(-0.5f,0.5f),
+//                        0,0,0);
+//                }
+
+                world.playSoundFromEntity(null,target,SoundEvents.ITEM_TRIDENT_THUNDER, SoundCategory.PLAYERS,1f,0.9f);
             }
         }
         int maxmeter = 10;
@@ -50,6 +67,7 @@ public class Conductor extends Enchantment {
             user.sendMessage(Text.of("[ Charge ready! ]"));
             user.getMainHandStack().getOrCreateNbt().putInt("meter",maxmeter+2);
             user.getMainHandStack().getOrCreateNbt().putInt("CustomModelData", 1);
+            world.playSoundFromEntity(null,target,SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS,3f,1.1f);
         }
         super.onTargetDamaged(user, target, level);
     }

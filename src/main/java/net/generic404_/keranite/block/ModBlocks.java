@@ -25,6 +25,6 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        Keranite.LOGGER.info("Registering ModBlocks for " + Keranite.MOD_ID);
+
     }
 }

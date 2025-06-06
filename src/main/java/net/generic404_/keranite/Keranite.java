@@ -1,12 +1,12 @@
 package net.generic404_.keranite;
 
 import net.fabricmc.api.ModInitializer;
-
 import net.generic404_.keranite.block.ModBlocks;
 import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.ModItemGroups;
 import net.generic404_.keranite.item.ModItems;
+import net.generic404_.keranite.particle.ParticleInitializer;
 import net.generic404_.keranite.projectiles.CustomProjectile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class Keranite implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Keranite world!");
+//		LOGGER.info("Hello Keranite world!");
 
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
@@ -33,5 +33,6 @@ public class Keranite implements ModInitializer {
 		ModEffects.registerModEffects();
 		ModEnchantments.registerModEnchants();
 		CustomProjectile.initialize();
+		ParticleInitializer.initialize();
 	}
 }

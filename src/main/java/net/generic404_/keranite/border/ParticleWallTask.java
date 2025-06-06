@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.List;
 
-import static net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.*;
+import static net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK;
 
 public class ParticleWallTask {
     private final ServerWorld world;
