@@ -27,7 +27,7 @@
   "enchantment.keranite.shockwave": "Shockwave",
   "enchantment.keranite.shockwave.desc": "Replaces your backdash with a powerful shockwave.",
 
-  "death.attack.discharged": "%1$s couldn't handle the electric discharge.",
+  "death.attack.discharged": "%1$s couldn't handle the electrical discharge.",
   "death.attack.shockwave": "%1$s was killed by a shockwave.",
 
   "block.keranite.keranite_block": "Keranite Block"
