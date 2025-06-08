@@ -29,11 +29,16 @@ public class KeraniteArmorItem extends ArmorItem {
                     evaluateArmorEffects(player);
                 }else{
                     int[] armorPercent = correctArmorPercentage(KeraniteArmorMaterials.HEAVY, player);
-                    if(armorPercent[1]>2&&armorPercent[2]==4){
-                        addStatusEffect(player, new StatusEffectInstance(StatusEffects.SLOWNESS,2,1,false,false,false));
-                    }else
-                    if(armorPercent[1]<=3&&armorPercent[1]>0){
-                        addStatusEffect(player, new StatusEffectInstance(StatusEffects.SLOWNESS,2,0,false,false,false));
+                    if(armorPercent[2]==4){
+                        if(armorPercent[1]>2){
+                            addStatusEffect(player, new StatusEffectInstance(StatusEffects.SLOWNESS,2,1,false,false,false));
+                        }else{
+                            addStatusEffect(player, new StatusEffectInstance(StatusEffects.SLOWNESS,2,0,false,false,false));
+                        }
+                    }else {
+                        if (armorPercent[1] <= 3 && armorPercent[1] > 0) {
+                            addStatusEffect(player, new StatusEffectInstance(StatusEffects.SLOWNESS, 2, 0, false, false, false));
+                        }
                     }
                 }
             }
@@ -94,14 +99,11 @@ public class KeraniteArmorItem extends ArmorItem {
     private int[] correctArmorPercentage(ArmorMaterial material, PlayerEntity player){
         int amount = 0;
         int max = 0;
-        int counter0 = 0;
         for(ItemStack armorStack : player.getInventory().armor){
             if(armorStack.getItem() instanceof ArmorItem){
                 max+=1;
-                ArmorItem armor = ((ArmorItem)player.getInventory().getArmorStack(counter0).getItem());
                 if(((ArmorItem)armorStack.getItem()).getMaterial()==material){amount+=1;}
             }
-            counter0+=1;
         }
         return new int[]{max-amount, amount, max};
     }

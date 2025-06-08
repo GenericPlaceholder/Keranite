@@ -5,6 +5,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 
 public class Charged extends StatusEffect {
     protected Charged(StatusEffectCategory category, int color) {
@@ -24,6 +25,7 @@ public class Charged extends StatusEffect {
         // eventually, this effect should disable sprinting.
         // see: mixin/NoSprint.java
         entity.disablesShield();
+
         if(entity.isFallFlying()){
             if(entity.getVelocity().y<=0) {
                 entity.setVelocity(0, entity.getVelocity().y-0.1d, 0);
@@ -32,6 +34,14 @@ public class Charged extends StatusEffect {
                 entity.setVelocity(0,0,0);
             }
         }
-        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,20,0,false,false,false));
+
+        if(entity.isSprinting()){
+//            entity.setSprinting(false);
+//            entity.setSneaking(true);
+            if(entity instanceof PlayerEntity plr){
+                plr.addExhaustion(0.1f);
+            }
+        }
+        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,2,0,false,false,false));
     }
 }

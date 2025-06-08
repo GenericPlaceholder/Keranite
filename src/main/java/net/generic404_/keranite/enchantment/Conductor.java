@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -62,9 +63,14 @@ public class Conductor extends Enchantment {
         int maxmeter = 10;
         int meter = Objects.requireNonNull(user.getMainHandStack().getNbt()).getInt("meter");
         if(Objects.requireNonNull(user.getMainHandStack().getNbt()).getInt("meter")<maxmeter){
-            user.getMainHandStack().getOrCreateNbt().putInt("meter",user.getMainHandStack().getNbt().getInt("meter")+1);
+            // make it check if player is in creative. to avoid desync
+            if(target instanceof PlayerEntity plr && !plr.isCreative()) {
+                user.getMainHandStack().getOrCreateNbt().putInt("meter", user.getMainHandStack().getNbt().getInt("meter") + 1);
+            }
         }else if(meter>=maxmeter&&meter<(maxmeter+2)){
-            user.sendMessage(Text.of("[ Charge ready! ]"));
+            if(world.isClient) {
+                user.sendMessage(Text.of("[ Charge ready! ]"));
+            }
             user.getMainHandStack().getOrCreateNbt().putInt("meter",maxmeter+2);
             user.getMainHandStack().getOrCreateNbt().putInt("CustomModelData", 1);
             world.playSoundFromEntity(null,target,SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS,3f,1.1f);
