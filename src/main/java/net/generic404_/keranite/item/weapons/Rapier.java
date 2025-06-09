@@ -39,20 +39,15 @@ public class Rapier extends SwordItem {
         return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getAttributeModifiers(slot);
     }
 
-    // make the actual sword do more damage during elytra flight, i mean attack damage
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
             NbtList enchants = user.getStackInHand(hand).getEnchantments();
             boolean hasVanish = false;
-            boolean hasDischarge = false;
             for (NbtElement element : enchants) {
                 for (String elment : element.toString().split("\"")) {
                     if(elment.equals("keranite:vanish")) {
                         hasVanish = true;
-                    }
-                    if(elment.equals("keranite:discharge")) {
-                        hasDischarge = true;
+                        break;
                     }
                 }
             }
@@ -67,15 +62,14 @@ public class Rapier extends SwordItem {
                 }
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
                 return TypedActionResult.consume(user.getStackInHand(hand));
-            } else if (hasVanish) {
+            } else {
                 user.setVelocity(0, 0.2, 0);
                 user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));
-                user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 30, 0, false, false, false));
+                user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 40, 0, false, true, false));
                 user.getItemCooldownManager().set(this, 250);
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.PLAYERS,1.2f,0.9f);
                 return TypedActionResult.consume(user.getStackInHand(hand));
             }
-        return TypedActionResult.pass(user.getStackInHand(hand));
     }
 }

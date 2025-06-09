@@ -20,7 +20,7 @@ public class CallbackToken extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack token = user.getStackInHand(hand);
 //            if (token.getNbt()!=null&&!token.getNbt().getBoolean("positionSaved")) {
-        if (user.isSneaking()||token.getNbt()!=null) {
+        if (user.isSneaking()||token.getNbt()==null) {
                 if(world.isClient) {
                     user.sendMessage(Text.of("[ Position Saved ]"));
                 }
@@ -40,8 +40,8 @@ public class CallbackToken extends Item {
                     user.fallDistance = 0f;
                     NbtCompound pos = token.getOrCreateNbt().getCompound("pos");
                     user.setPosition(pos.getDouble("x"), pos.getDouble("y"), pos.getDouble("z"));
-                    token.getOrCreateNbt().putBoolean("positionSaved", false);
-                    token.getOrCreateNbt().putInt("CustomModelData", 0);
+//                    token.getOrCreateNbt().putBoolean("positionSaved", false);
+//                    token.getOrCreateNbt().putInt("CustomModelData", 0);
                     user.incrementStat(Stats.USED.getOrCreateStat(this));
                 }else{
                     if (world.isClient) {
