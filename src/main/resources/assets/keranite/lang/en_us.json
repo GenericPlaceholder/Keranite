@@ -8,15 +8,17 @@
   "item.keranite.keranite_broadsword": "Keranite Broadsword",
   "item.keranite.keranite_rapier": "Keranite Rapier",
 
-  "item.keranite.light_helmet": "Light Keranite Helmet",
-  "item.keranite.light_chestplate": "Light Keranite Chestplate",
-  "item.keranite.light_leggings": "Light Keranite Leggings",
-  "item.keranite.light_boots": "Light Keranite Boots",
+  "item.keranite.light_helmet": "Keranite Helmet",
+  "item.keranite.light_chestplate": "Keranite Chestplate",
+  "item.keranite.light_leggings": "Keranite Leggings",
+  "item.keranite.light_boots": "Keranite Boots",
 
-  "item.keranite.heavy_helmet": "Keranite Helmet",
-  "item.keranite.heavy_chestplate": "Keranite Chestplate",
-  "item.keranite.heavy_leggings": "Keranite Leggings",
-  "item.keranite.heavy_boots": "Keranite Boots",
+  "item.keranite.heavy_helmet": "Reinforced Netherite Helmet",
+  "item.keranite.heavy_chestplate": "Reinforced Netherite Chestplate",
+  "item.keranite.heavy_leggings": "Reinforced Netherite Leggings",
+  "item.keranite.heavy_boots": "Reinforced Netherite Boots",
+
+  "item.keranite.thighhighs": "Pink Thigh High Socks",
 
   "enchantment.keranite.conductor": "Conductor",
   "enchantment.keranite.conductor.desc": "After dealing 10 attacks or 5 crits, you can activate a one use stronger attack.",
