@@ -3,6 +3,7 @@ package net.generic404_.keranite.item;
 import net.generic404_.keranite.Keranite;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -13,7 +14,9 @@ public enum KeraniteArmorMaterials implements ArmorMaterial {
     LIGHT("light",24,new int[] {3,8,6,3},22,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,1f,0.1f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
     HEAVY("heavy",27,new int[] {4,9,5,4},22,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,3f,0.2f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT));
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,3f,0.2f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
+    SOCK("sock",27,new int[] {1,3,2,1},22,
+    SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,0.5f,0f,()->Ingredient.ofItems(Items.STRING));
 
     private final String name;
     private final int durabilityMultiplier;

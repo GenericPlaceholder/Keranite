@@ -2,6 +2,7 @@ package net.generic404_.keranite.enchantment;
 
 import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.item.ModItems;
+import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -10,6 +11,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -29,7 +31,7 @@ public class Conductor extends Enchantment {
     }
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 2;
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
@@ -47,24 +49,22 @@ public class Conductor extends Enchantment {
                 user.getMainHandStack().getOrCreateNbt().putInt("meter", 0);
                 user.getMainHandStack().getOrCreateNbt().putInt("CustomModelData", 0);
 
-                // i cant figure this out gruhhhhhh
-//                Vec3d pos = target.getPos();
-//                for(int i=0;i<10;i++){
-//                world.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
-//                        pos.x+RandomUtil.getRandomFloat(-0.5f,0.5f),
-//                        pos.y+RandomUtil.getRandomFloat(-1f,1f),
-//                        pos.z+RandomUtil.getRandomFloat(-0.5f,0.5f),
-//                        0,0,0);
-//                }
-
                 world.playSoundFromEntity(null,target,SoundEvents.ITEM_TRIDENT_THUNDER, SoundCategory.PLAYERS,1f,0.9f);
+
+                for(int i=0;i<10;i++) {
+                    world.addParticle(ParticleTypes.ELECTRIC_SPARK, target.getX()+RandomUtil.getRandomFloat(-0.5f,0.5f), target.getY()+RandomUtil.getRandomFloat(-0.5f,0.5f), target.getZ()+RandomUtil.getRandomFloat(-0.5f,0.5f), 0,0,0);
+                }
             }
         }
         int maxmeter = 10;
         int meter = Objects.requireNonNull(user.getMainHandStack().getNbt()).getInt("meter");
         if(Objects.requireNonNull(user.getMainHandStack().getNbt()).getInt("meter")<maxmeter){
             // make it check if player is in creative. to avoid desync
-            if(target instanceof PlayerEntity plr && !plr.isCreative()) {
+            if (target instanceof PlayerEntity plr) {
+                if (!plr.isCreative()) {
+                    user.getMainHandStack().getOrCreateNbt().putInt("meter", user.getMainHandStack().getNbt().getInt("meter") + 1);
+                }
+            }else{
                 user.getMainHandStack().getOrCreateNbt().putInt("meter", user.getMainHandStack().getNbt().getInt("meter") + 1);
             }
         }else if(meter>=maxmeter&&meter<(maxmeter+2)){

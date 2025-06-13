@@ -40,6 +40,8 @@ public class ModItems {
 	public static final Item HEAVY_LEGGINGS = registerItem("heavy_leggings", new KeraniteArmorItem(KeraniteArmorMaterials.HEAVY, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
 	public static final Item HEAVY_BOOTS = registerItem("heavy_boots", new KeraniteArmorItem(KeraniteArmorMaterials.HEAVY, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
+	public static final Item THIGHHIGHS = registerItem("thighhighs", new ArmorItem(KeraniteArmorMaterials.SOCK, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+
 	private static void addItemsToTabIng(FabricItemGroupEntries entries){
 		entries.add(KERANITE_INGOT);
 		entries.add(RAW_KERANITE);

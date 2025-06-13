@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
+import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -14,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -61,6 +63,9 @@ public class Rapier extends SwordItem {
                     user.getItemCooldownManager().set(this, 100);
                 }
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
+                for(int i=0;i<5;i++) {
+                    world.addParticle(ParticleTypes.CLOUD, user.getX(), user.getY(), user.getZ(),(double) RandomUtil.getRandomInt(-1, 1) /100, (double) RandomUtil.getRandomInt(-1, 1) /100,(double) RandomUtil.getRandomInt(-1, 1) /100);
+                }
                 return TypedActionResult.consume(user.getStackInHand(hand));
             } else {
                 user.setVelocity(0, 0.2, 0);
@@ -69,6 +74,9 @@ public class Rapier extends SwordItem {
                 user.getItemCooldownManager().set(this, 250);
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.PLAYERS,1.2f,0.9f);
+                for(int i=0;i<10;i++) {
+                    world.addParticle(ParticleTypes.ELECTRIC_SPARK, user.getX(), user.getY(), user.getZ(),RandomUtil.getRandomFloat(-1,1),RandomUtil.getRandomFloat(-1,1),RandomUtil.getRandomFloat(-1,1));
+                }
                 return TypedActionResult.consume(user.getStackInHand(hand));
             }
     }

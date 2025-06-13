@@ -6,6 +6,7 @@ import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
 import net.generic404_.keranite.util.NearbyEntitiesUtil;
+import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -14,6 +15,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -81,6 +83,10 @@ public class Broadsword extends SwordItem {
             world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,1f,0.8f);
             world.playSoundFromEntity(null,user, SoundEvents.ENTITY_DRAGON_FIREBALL_EXPLODE, SoundCategory.PLAYERS,0.8f,1f);
             world.playSoundFromEntity(null,user, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS,0.6f,1.4f);
+            for(int i=0;i<100;i++) {
+                world.addParticle(ParticleTypes.ASH, user.getX()+RandomUtil.getRandomFloat(-5,5), user.getY()+RandomUtil.getRandomFloat(-3,3), user.getZ()+RandomUtil.getRandomFloat(-5,5),0,0,0);
+            }
+            world.addParticle(ParticleTypes.EXPLOSION,user.getX(),user.getY(),user.getZ(),0,0,0);
             user.getItemCooldownManager().set(this, 80);
             return TypedActionResult.consume(user.getStackInHand(hand));
         } else {
@@ -88,6 +94,9 @@ public class Broadsword extends SwordItem {
             user.addVelocity(0,0.2,0);
             user.fallDistance = -3;
             world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
+            for(int i=0;i<5;i++) {
+                world.addParticle(ParticleTypes.CLOUD, user.getX(), user.getY(), user.getZ(),(double) RandomUtil.getRandomInt(-1, 1) /100, (double) RandomUtil.getRandomInt(-1, 1) /100,(double) RandomUtil.getRandomInt(-1, 1) /100);
+            }
             user.getItemCooldownManager().set(this, 30);
             return TypedActionResult.consume(user.getStackInHand(hand));
         }

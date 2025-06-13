@@ -10,6 +10,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -37,6 +39,8 @@ public class Discharge extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         super.onTargetDamaged(user, target, level);
 
+        World world = user.getWorld();
+
 //        int distanceFromPlayerMax = 6*level;
 //        Box myBox = new Box(target.getBlockPos()).expand(distanceFromPlayerMax);
 //
@@ -60,6 +64,9 @@ public class Discharge extends Enchantment {
             newEntityList = entityList;
         }
         for(Entity viewed : newEntityList){
+            for(int i=0;i<10;i++) {
+                world.addParticle(ParticleTypes.ELECTRIC_SPARK, viewed.getX() + RandomUtil.getRandomFloat(-0.5f, 0.5f), viewed.getY() + RandomUtil.getRandomFloat(-0.5f, 0.5f), viewed.getZ() + RandomUtil.getRandomFloat(-0.5f, 0.5f), 0, 0, 0);
+            }
             viewed.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.DISCHARGED), 5*level);
         }
     }

@@ -35,6 +35,8 @@ public class ModItemGroups {
                         entries.add(ModItems.HEAVY_CHESTPLATE);
                         entries.add(ModItems.HEAVY_LEGGINGS);
                         entries.add(ModItems.HEAVY_BOOTS);
+
+                        entries.add(ModItems.THIGHHIGHS);
                     }).build());
 
     public static void registerItemGroups(){
