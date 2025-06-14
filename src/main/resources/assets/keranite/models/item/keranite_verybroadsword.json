@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "keranite:item/keranite_broadsword"
+  },
+  "gui_light": "front",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, -90, 45],
+      "translation": [0, 16, 0],
+      "scale": [3.4, 3.4, 1.9]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 90, -45],
+      "translation": [0, 16, 0],
+      "scale": [3.4, 3.4, 1.9]
+    },
+    "firstperson_righthand": {
+      "rotation": [-10, -90, 45],
+      "translation": [2, 10, 0.5],
+      "scale": [3, 3, 1.6]
+    },
+    "firstperson_lefthand": {
+      "rotation": [-10, 90, -45],
+      "translation": [2, 10, 0.5],
+      "scale": [3, 3, 1.6]
+    },
+    "ground": {
+      "translation": [2.5, 14, 0],
+      "scale": [2, 2, 2]
+    },
+    "gui": {
+      "translation": [-0.5, -0.5, -0.5],
+      "scale": [2, 2, 2]
+    },
+    "head": {
+      "rotation": [0, 90, 45],
+      "translation": [0, 42.5, 0],
+      "scale": [4, 4, 4]
+    },
+    "fixed": {
+      "rotation": [0,0,90],
+      "translation": [-1.6, 1.6, 0],
+      "scale": [2, 2, 2]
+    }
+  }
+}

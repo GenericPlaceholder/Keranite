@@ -22,6 +22,6 @@ public class Shockwave extends Enchantment {
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.KERANITE_BROADSWORD);
+        return stack.isOf(ModItems.KERANITE_BROADSWORD)||stack.isOf(ModItems.KERANITE_VERYBROADSWORD);
     }
 }

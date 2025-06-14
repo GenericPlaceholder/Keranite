@@ -29,7 +29,7 @@ public class Rapier extends SwordItem {
     protected static final UUID ATTACKREACH_MODIFIER_UUID = UUID.fromString("a92256bc-0efa-47ed-aab1-adea724a852c");
     protected static final UUID REACH_MODIFIER_UUID = UUID.fromString("603cbd44-8360-4df7-b10a-2670a4414694");
     public Rapier(Settings settings) {
-        super(KeraniteToolMaterial.KERANITE, 7, (1.3f - 4f), settings);
+        super(KeraniteToolMaterial.KERANITE, 8, (1.3f - 4f), settings);
     }
 
     @Override

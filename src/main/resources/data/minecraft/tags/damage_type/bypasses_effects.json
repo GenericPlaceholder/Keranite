@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "keranite:discharged"
+    "keranite:discharged",
+    "keranite:shockwave"
   ]
 }
