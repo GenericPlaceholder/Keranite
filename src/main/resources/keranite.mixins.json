@@ -3,13 +3,13 @@
   "package": "net.generic404_.keranite.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "NoSprint",
     "ShorterFollowRange"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
+    "ItemRenderingConditional",
     "Vanish"
   ]
 }

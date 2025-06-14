@@ -13,9 +13,4 @@ public class Vanishing extends StatusEffect {
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return false;
     }
-
-//    // This method is called when it applies the status effect. We implement custom functionality here.
-//    @Override
-//    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-//    }
 }

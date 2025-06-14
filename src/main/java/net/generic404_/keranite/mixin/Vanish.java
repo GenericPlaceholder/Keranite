@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EntityRenderer.class)
 public class Vanish {
     @Inject(method="shouldRender",at=@At("HEAD"), cancellable = true)
-    public void onRenderVisible(Entity entity, Frustum frustum, double x, double y, double z, CallbackInfoReturnable<Boolean> cir) {
+    private void onRenderVisible(Entity entity, Frustum frustum, double x, double y, double z, CallbackInfoReturnable<Boolean> cir) {
         if (entity instanceof LivingEntity livent && entity.isAlive()) {
             if (livent.hasStatusEffect(ModEffects.VANISHING)) {
                 cir.setReturnValue(false);

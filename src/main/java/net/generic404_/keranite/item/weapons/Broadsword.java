@@ -75,7 +75,7 @@ public class Broadsword extends SwordItem {
             user.setVelocity(new Vec3d(0,0.75,0));
             ArrayList<Entity> entityList = NearbyEntitiesUtil.getNearbyEntities(user,5,user.getBlockPos());
             for(Entity ent : entityList){
-                ent.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.SHOCKWAVE), 3);
+                ent.damage(ModDamageTypes.of(world, ModDamageTypes.SHOCKWAVE), 3);
                 ent.addVelocity(new Vec3d(0,0.5,0));
                 ent.addVelocity(((ent.getPos().subtract(user.getPos())).multiply(6-user.distanceTo(ent))).multiply(0.15));
             }

@@ -1,12 +1,11 @@
 package net.generic404_.keranite.effect;
 
+import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-
-import java.util.Random;
 
 public class Shocked extends StatusEffect {
     protected Shocked(StatusEffectCategory category, int color) {
@@ -24,19 +23,22 @@ public class Shocked extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         assert entity.isAlive();
         if(entity.isPlayer()){
-            Random rand = new Random();
             int max = 3*amplifier+3;
             int min = max*-1;
-            entity.setYaw(entity.getYaw()+rand.nextInt((max-min)+1)+min);
-            entity.setPitch(entity.getPitch()+rand.nextInt((max-min)+1)+min);
+
+            entity.setYaw(entity.getYaw()+ RandomUtil.getRandomInt(min,max));
+            entity.setPitch(entity.getPitch()+ RandomUtil.getRandomInt(min,max));
             entity.addVelocity(
-                    (double) (rand.nextInt((max - min) + 1) + min) /85,
-                    (double) (rand.nextInt((-min) + 1) + min) /70,
-                    (double) (rand.nextInt((max - min) + 1) + min) /85
+                    RandomUtil.getRandomFloat(min,max)/75,
+                    entity.isOnGround() ? RandomUtil.getRandomFloat(min,max) : 0,
+                    RandomUtil.getRandomFloat(min,max)/75
             );
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 2,1,false,false,false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,2,0,false,false,false));
         }else {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 2,2,false,false,false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,2,2,false,false,false));
         }
     }
 }

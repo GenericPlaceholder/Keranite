@@ -17,7 +17,7 @@ public abstract class NoSprint {
 
 
 	@Inject(method="onKey",at = @At("HEAD"), cancellable = true)
-	public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo callbackInfo) {
+	private void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo callbackInfo) {
 		MinecraftClient client = MinecraftClient.getInstance();
 		KeyBinding sprint = client.options.sprintKey;
 		/*if(sprint.isPressed()){

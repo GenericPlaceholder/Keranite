@@ -24,14 +24,4 @@ public class Vanish extends Enchantment {
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
         return stack.isOf(ModItems.KERANITE_RAPIER);
     }
-
-//    public void onTargetDamaged(@NotNull LivingEntity user, Entity target, int level) {
-//        if(user.getMainHandStack().getItem()==ModItems.KERANITE_RAPIER) {
-//            user.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY,10*level,0,false,true,true));
-//            if(target.isAlive()){
-//                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS,10*level,0,false,true,true));
-//            }
-//        }
-//        super.onTargetDamaged(user, target, level);
-//    }
 }
