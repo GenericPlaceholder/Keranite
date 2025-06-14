@@ -15,8 +15,9 @@ public enum KeraniteArmorMaterials implements ArmorMaterial {
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,1f,0.1f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
     HEAVY("heavy",27,new int[] {4,9,5,4},22,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,3f,0.1f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
+
     SOCK("sock",8,new int[] {1,3,2,1},22,
-    SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING));
+            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING));
 
     private final String name;
     private final int durabilityMultiplier;
