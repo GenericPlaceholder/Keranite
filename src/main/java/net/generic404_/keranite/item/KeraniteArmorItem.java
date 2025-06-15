@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class KeraniteArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>())
-            .put(KeraniteArmorMaterials.LIGHT, new StatusEffectInstance(StatusEffects.SLOWNESS,2,0,false,false,false))
+            .put(KeraniteArmorMaterials.LIGHT, new StatusEffectInstance(StatusEffects.REGENERATION,2,0,false,false,false))
             .put(KeraniteArmorMaterials.HEAVY, new StatusEffectInstance(StatusEffects.SLOWNESS,2,1,false,false,false)).build();
 
     public KeraniteArmorItem(ArmorMaterial material, Type type, Settings settings) {
@@ -62,6 +62,11 @@ public class KeraniteArmorItem extends ArmorItem {
         if (!hasPlayerEffect) {
             player.addStatusEffect(effect);
         }
+//        else {
+//            if(Objects.requireNonNull(player.getStatusEffect(effect.getEffectType())).getDuration()<2){
+//                player.addStatusEffect(effect);
+//            }
+//        }
     }
 
     private void addStatusEffectForMaterial(PlayerEntity player, ArmorMaterial mapArmorMaterial, StatusEffectInstance mapStatusEffect){

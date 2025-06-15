@@ -19,7 +19,9 @@
   "item.keranite.heavy_leggings": "Reinforced Netherite Leggings",
   "item.keranite.heavy_boots": "Reinforced Netherite Boots",
 
-  "item.keranite.thighhighs": "Pink Thigh High Socks",
+  "item.keranite.thighhighs_pink": "Pink Thigh High Socks",
+  "item.keranite.thighhighs_black": "Black Thigh High Socks",
+  "item.keranite.thighhighs_blue": "Pink & Black Thigh High Socks",
 
   "enchantment.keranite.conductor": "Conductor",
   "enchantment.keranite.conductor.desc": "After dealing 10 attacks or 5 crits, you can activate a one use stronger attack.",

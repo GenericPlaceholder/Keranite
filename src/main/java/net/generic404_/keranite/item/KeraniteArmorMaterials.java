@@ -12,11 +12,15 @@ import java.util.function.Supplier;
 
 public enum KeraniteArmorMaterials implements ArmorMaterial {
     LIGHT("light",24,new int[] {3,8,6,3},22,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,1f,0.1f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
-    HEAVY("heavy",27,new int[] {4,9,5,4},22,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,2f,0.1f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
+    HEAVY("heavy",27,new int[] {4,9,5,4},18,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,3f,0.1f,()->Ingredient.ofItems(ModItems.KERANITE_INGOT)),
 
-    SOCK("sock",8,new int[] {1,3,2,1},22,
+    SOCK_PINK("sock_pink",8,new int[] {1,3,2,1},22,
+            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING)),
+    SOCK_BLACK("sock_black",8,new int[] {1,3,2,1},22,
+            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING)),
+    SOCK_BLUE("sock_blue",8,new int[] {1,3,2,1},22,
             SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING));
 
     private final String name;

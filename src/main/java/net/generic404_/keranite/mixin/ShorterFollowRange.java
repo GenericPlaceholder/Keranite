@@ -15,17 +15,17 @@ public abstract class ShorterFollowRange {
     @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
     @ModifyReturnValue(method = "getAttackDistanceScalingFactor", at = @At("RETURN"))
-    private double keranite$thighhighs(double original, Entity entity) {
+    private double thighhighs(double original, Entity entity) {
         if (entity != null) {
             for ( ItemStack armit : this.getArmorItems() ) {
-                if(armit.isOf(ModItems.THIGHHIGHS)){return original / 2;}
+                if(armit.isOf(ModItems.THIGHHIGHS_PINK)||armit.isOf(ModItems.THIGHHIGHS_BLACK)||armit.isOf(ModItems.THIGHHIGHS_BLUE)){return original / 2;}
             }
         }
         return original;
     }
 
     @ModifyReturnValue(method = "getAttackDistanceScalingFactor", at = @At("RETURN"))
-    private double keranite$vanish(double original, Entity entity) {
+    private double vanish(double original, Entity entity) {
         if (entity != null) {
             if(entity instanceof LivingEntity livent&&livent.hasStatusEffect(ModEffects.VANISHING)){
                 return original / 5;

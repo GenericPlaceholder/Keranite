@@ -36,7 +36,9 @@ public class ModItemGroups {
                         entries.add(ModItems.HEAVY_LEGGINGS);
                         entries.add(ModItems.HEAVY_BOOTS);
 
-                        entries.add(ModItems.THIGHHIGHS);
+                        entries.add(ModItems.THIGHHIGHS_PINK);
+                        entries.add(ModItems.THIGHHIGHS_BLACK);
+                        entries.add(ModItems.THIGHHIGHS_BLUE);
                     }).build());
 
     public static void registerItemGroups(){

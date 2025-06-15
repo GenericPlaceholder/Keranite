@@ -8,10 +8,10 @@ import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
+import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,7 +25,7 @@ public class ItemRenderingConditional {
             MinecraftClient client = MinecraftClient.getInstance();
 
             ItemRenderer ir = client.getItemRenderer();
-            BakedModel model = client.getBakedModelManager().getModel(new Identifier("keranite", "item/keranite_broadsword_handheld"));
+            BakedModel model = client.getBakedModelManager().getModel(ModelIdentifier.of("keranite", "item/keranite_broadsword_handheld"));
 
             if(model!=null){
                 matrices.push();
