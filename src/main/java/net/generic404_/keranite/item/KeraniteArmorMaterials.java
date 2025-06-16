@@ -21,7 +21,13 @@ public enum KeraniteArmorMaterials implements ArmorMaterial {
     SOCK_BLACK("sock_black",8,new int[] {1,3,2,1},22,
             SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING)),
     SOCK_BLUE("sock_blue",8,new int[] {1,3,2,1},22,
-            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING));
+            SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING)),
+    SOCK_TRANS("sock_trans",8,new int[] {1,3,2,1},22,
+    SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING)),
+    SOCK_LESB("sock_lesb",8,new int[] {1,3,2,1},22,
+    SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING)),
+    SOCK_GAY("sock_gay",8,new int[] {1,3,2,1},22,
+    SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA,0f,0f,()->Ingredient.ofItems(Items.STRING));
 
     private final String name;
     private final int durabilityMultiplier;

@@ -39,6 +39,9 @@ public class ModItemGroups {
                         entries.add(ModItems.THIGHHIGHS_PINK);
                         entries.add(ModItems.THIGHHIGHS_BLACK);
                         entries.add(ModItems.THIGHHIGHS_BLUE);
+                        entries.add(ModItems.THIGHHIGHS_TRANS);
+                        entries.add(ModItems.THIGHHIGHS_LESB);
+                        entries.add(ModItems.THIGHHIGHS_GAY);
                     }).build());
 
     public static void registerItemGroups(){
