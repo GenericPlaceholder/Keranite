@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "keranite",
+  "category": "equipment",
+  "pattern": [
+    "kkk",
+    "k k",
+    "k k"
+  ],
+  "key": {
+    "k": {
+      "item": "keranite:keranite_ingot"
+    }
+  },
+  "result": {
+    "item": "keranite:light_leggings",
+    "count": 1
+  }
+}

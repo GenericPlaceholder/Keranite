@@ -3,7 +3,7 @@
 	"id": "keranite",
 	"version": "1.20.1",
 	"name": "Keranite",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Adds Keranite, a new material which can not only reinforce netherite armor, but also be used for brand new armor and weaponry.",
 	"authors": [
 		"Generic404_"
 	],
@@ -11,7 +11,7 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "CC BY-NC",
 	"icon": "assets/keranite/icon.png",
 	"environment": "*",
 	"entrypoints": {

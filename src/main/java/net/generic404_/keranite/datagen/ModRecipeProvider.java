@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
-    private static final List<ItemConvertible> KERANITE_SMELTABLES = List.of(ModItems.RAW_KERANITE);
+    private static final List<ItemConvertible> KERANITE_SMELTABLES = List.of(ModItems.RAW_KERANITE,ModBlocks.KERANITE_ORE);
 
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
@@ -21,7 +21,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerSmelting(exporter, KERANITE_SMELTABLES, RecipeCategory.MISC, ModItems.KERANITE_INGOT,
-                5f, 500, "keranite");
+                5f, 250, "keranite");
+        offerBlasting(exporter, KERANITE_SMELTABLES, RecipeCategory.MISC, ModItems.KERANITE_INGOT,
+                8f, 200, "keranite");
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.KERANITE_INGOT, RecipeCategory.DECORATIONS, ModBlocks.KERANITE_BLOCK);
     }
 }

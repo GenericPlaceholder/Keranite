@@ -19,6 +19,7 @@ public class ModItemGroups {
                         entries.add(ModItems.RAW_KERANITE);
                         entries.add(ModItems.KERANITE_INGOT);
                         entries.add(ModBlocks.KERANITE_BLOCK);
+                        entries.add(ModBlocks.KERANITE_ORE);
 
                         entries.add(ModItems.CALLBACK_TOKEN);
                         entries.add(ModItems.DISPOSABLE_CALLBACK_TOKEN);

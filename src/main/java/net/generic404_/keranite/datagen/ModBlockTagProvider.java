@@ -16,10 +16,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg){
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.KERANITE_BLOCK);
+                .add(ModBlocks.KERANITE_BLOCK)
+                .add(ModBlocks.KERANITE_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.KERANITE_BLOCK);
+                .add(ModBlocks.KERANITE_BLOCK)
+                .add(ModBlocks.KERANITE_ORE);
 
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.KERANITE_BLOCK);

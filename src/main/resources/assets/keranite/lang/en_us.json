@@ -38,5 +38,6 @@
   "death.attack.discharged": "%1$s couldn't handle the electrical discharge.",
   "death.attack.shockwave": "%1$s was killed by a shockwave.",
 
-  "block.keranite.keranite_block": "Keranite Block"
+  "block.keranite.keranite_block": "Keranite Block",
+  "block.keranite.keranite_ore": "Keranite Ore"
 }
