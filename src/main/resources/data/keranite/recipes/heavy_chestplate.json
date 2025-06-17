@@ -4,7 +4,7 @@
     "item": "minecraft:netherite_chestplate"
   },
   "addition": {
-    "item": "keranite:keranite_ingot"
+    "item": "keranite:keranite_block"
   },
   "template": {
     "item": "minecraft:lava_bucket"
