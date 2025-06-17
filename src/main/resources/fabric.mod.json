@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "keranite",
-	"version": "v0.14.0-1.20.1-alpha",
+	"version": "v0.14.1-1.20.1-alpha",
 	"name": "Keranite",
 	"description": "Adds Keranite, a new material which can not only reinforce netherite armor, but also be used for brand new armor and weaponry.",
 	"authors": [
@@ -11,7 +11,7 @@
 		"homepage": "https://https://github.com/GenericPlaceholder/Keranite-Fabric-1.20.1/",
 		"sources": "https://https://github.com/GenericPlaceholder/Keranite-Fabric-1.20.1/"
 	},
-	"license": "CC BY-NC",
+	"license": "CC-BY-NC-4.0",
 	"icon": "assets/keranite/icon.png",
 	"environment": "*",
 	"entrypoints": {
