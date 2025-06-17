@@ -9,6 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShovelItem;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.NotNull;
@@ -28,11 +29,12 @@ public class Force extends Enchantment {
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.KERANITE_RAPIER);
+        return stack.isOf(ModItems.KERANITE_RAPIER)||stack.getItem() instanceof ShovelItem;
     }
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target.getWorld() instanceof ServerWorld serverWorld){
+            user.fallDistance = -3;
             DamageSources sources = serverWorld.getDamageSources();
 
             int speed =
