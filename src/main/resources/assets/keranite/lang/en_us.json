@@ -34,6 +34,10 @@
   "enchantment.keranite.vanish.desc": "Replaces your forward dash with a backwards dash, and makes you (and your armor) fully invisible for a second and a half afterwards.",
   "enchantment.keranite.shockwave": "Shockwave",
   "enchantment.keranite.shockwave.desc": "Replaces your backdash with a powerful shockwave.",
+  "enchantment.keranite.gust": "Gust",
+  "enchantment.keranite.gust.desc": "Moves nearby entities in the direction you're looking.",
+  "enchantment.keranite.force": "Force",
+  "enchantment.keranite.force.desc": "Adds extra damage based on total speed.",
 
   "death.attack.discharged": "%1$s couldn't handle the electrical discharge.",
   "death.attack.shockwave": "%1$s was killed by a shockwave.",

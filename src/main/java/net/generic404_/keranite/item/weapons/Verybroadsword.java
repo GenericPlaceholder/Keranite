@@ -5,7 +5,7 @@ import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
-import net.generic404_.keranite.util.NearbyEntitiesUtil;
+import net.generic404_.keranite.util.NearbyUtil;
 import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -71,7 +71,7 @@ public class Verybroadsword extends SwordItem {
             }
         } else if(hasShockwave) {
             user.setVelocity(new Vec3d(0,1.5,0));
-            ArrayList<Entity> entityList = NearbyEntitiesUtil.getNearbyEntities(user,10,user.getBlockPos());
+            ArrayList<Entity> entityList = NearbyUtil.getByLivingEntity(user,10,user.getBlockPos());
             for(Entity ent : entityList){
                 ent.damage(ModDamageTypes.of(user.getWorld(), ModDamageTypes.SHOCKWAVE), 6);
                 ent.addVelocity(new Vec3d(0,1,0));

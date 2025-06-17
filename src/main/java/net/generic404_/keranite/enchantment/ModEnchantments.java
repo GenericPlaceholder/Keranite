@@ -11,6 +11,8 @@ public class ModEnchantments {
     public static final Enchantment VANISH = registerEnchant("vanish", new Vanish());
     public static final Enchantment DISCHARGE = registerEnchant("discharge", new Discharge());
     public static final Enchantment SHOCKWAVE = registerEnchant("shockwave", new Shockwave());
+    public static final Enchantment GUST = registerEnchant("gust", new Gust());
+    public static final Enchantment FORCE = registerEnchant("force", new Force());
 
     private static Enchantment registerEnchant(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(Keranite.MOD_ID, name), enchantment);

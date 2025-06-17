@@ -2,7 +2,7 @@ package net.generic404_.keranite.enchantment;
 
 import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.item.ModItems;
-import net.generic404_.keranite.util.NearbyEntitiesUtil;
+import net.generic404_.keranite.util.NearbyUtil;
 import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -50,7 +50,7 @@ public class Discharge extends Enchantment {
 //            if(ent.isAlive()&&ent.isLiving()&&ent.isAttackable()){entityList.add(ent);}
 //        }
 
-        ArrayList<Entity> entityList = NearbyEntitiesUtil.getNearbyEntities(user,6*level,target.getBlockPos());
+        ArrayList<Entity> entityList = NearbyUtil.getByLivingEntity(user,6*level,target.getBlockPos());
 
         ArrayList<Entity> newEntityList = new ArrayList<>();
         if(entityList.size()>3){

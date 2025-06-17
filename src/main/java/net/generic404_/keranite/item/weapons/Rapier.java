@@ -5,7 +5,9 @@ import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
+import net.generic404_.keranite.util.NearbyUtil;
 import net.generic404_.keranite.util.RandomUtil;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -23,6 +25,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Rapier extends SwordItem {
@@ -43,31 +46,22 @@ public class Rapier extends SwordItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+            ArrayList<World> NearbyWorlds = NearbyUtil.getWorlds(user, 100, user.getBlockPos());
+
             NbtList enchants = user.getStackInHand(hand).getEnchantments();
             boolean hasVanish = false;
+            boolean hasGust = false;
             for (NbtElement element : enchants) {
                 for (String elment : element.toString().split("\"")) {
                     if(elment.equals("keranite:vanish")) {
                         hasVanish = true;
-                        break;
+                    }
+                    if(elment.equals("keranite:gust")) {
+                        hasGust = true;
                     }
                 }
             }
-            if (!hasVanish) {
-                if (!user.isFallFlying()) {
-                    user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1)));
-                    user.fallDistance = -3;
-                    user.getItemCooldownManager().set(this, 50);
-                } else {
-                    user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1.5)));
-                    user.getItemCooldownManager().set(this, 100);
-                }
-                world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
-                for(int i=0;i<5;i++) {
-                    world.addParticle(ParticleTypes.CLOUD, user.getX(), user.getY(), user.getZ(),(double) RandomUtil.getRandomInt(-1, 1) /100, (double) RandomUtil.getRandomInt(-1, 1) /100,(double) RandomUtil.getRandomInt(-1, 1) /100);
-                }
-                return TypedActionResult.consume(user.getStackInHand(hand));
-            } else {
+            if (hasVanish) {
                 user.setVelocity(0, 0.2, 0);
                 user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));
                 user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 40, 0, false, true, false));
@@ -77,6 +71,32 @@ public class Rapier extends SwordItem {
                 for(int i=0;i<10;i++) {
                     world.addParticle(ParticleTypes.ELECTRIC_SPARK, user.getX(), user.getY(), user.getZ(),RandomUtil.getRandomFloat(-1,1),RandomUtil.getRandomFloat(-1,1),RandomUtil.getRandomFloat(-1,1));
                 }
+                return TypedActionResult.consume(user.getStackInHand(hand));
+            } else if (hasGust) {
+                ArrayList<Entity> nearbyEntities = NearbyUtil.getByLivingEntity(user,8,user.getBlockPos());
+                Vec3d movementvec = user.getRotationVector().multiply(2);
+                for(Entity ent : nearbyEntities){
+                    ent.setVelocity(movementvec);
+                }
+                user.getItemCooldownManager().set(this, 150);
+                return TypedActionResult.success(user.getStackInHand(hand),true);
+            } else {
+                if (!user.isFallFlying()) {
+                    user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1)));
+                    user.fallDistance = -3;
+                    user.getItemCooldownManager().set(this, 50);
+                } else {
+                    user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 1, 1).multiply(1.5)));
+                    user.getItemCooldownManager().set(this, 100);
+                }
+
+                for(World world1 : NearbyWorlds){
+                    world1.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.7f,0.8f);
+                    for(int i=0;i<5;i++) {
+                        world1.addParticle(ParticleTypes.CLOUD, user.getX(), user.getY(), user.getZ(),(double) RandomUtil.getRandomInt(-1, 1) /100, (double) RandomUtil.getRandomInt(-1, 1) /100,(double) RandomUtil.getRandomInt(-1, 1) /100);
+                    }
+                }
+
                 return TypedActionResult.consume(user.getStackInHand(hand));
             }
     }

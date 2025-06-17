@@ -30,7 +30,7 @@ public class Shocked extends StatusEffect {
             entity.setPitch(entity.getPitch()+ RandomUtil.getRandomInt(min,max));
             entity.addVelocity(
                     RandomUtil.getRandomFloat(min,max)/75,
-                    entity.isOnGround() ? RandomUtil.getRandomFloat(min,max) : 0,
+                    entity.isOnGround() ? 0 : RandomUtil.getRandomFloat(min,max)/85,
                     RandomUtil.getRandomFloat(min,max)/75
             );
 
