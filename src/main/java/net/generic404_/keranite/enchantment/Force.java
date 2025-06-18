@@ -1,5 +1,6 @@
 package net.generic404_.keranite.enchantment;
 
+import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.item.ModItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -25,7 +26,7 @@ public class Force extends Enchantment {
     }
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 1;
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
@@ -34,27 +35,39 @@ public class Force extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target.getWorld() instanceof ServerWorld serverWorld){
-            user.fallDistance = -3;
             DamageSources sources = serverWorld.getDamageSources();
 
-            int speed =
-                    MathHelper.roundDownToMultiple(
-                    MathHelper.sqrt((float) (
-                                    MathHelper.square(user.getVelocity().x)
-                                            +
-                                            MathHelper.square(user.getVelocity().y)
-                                            +
-                                            MathHelper.square(user.getVelocity().z)
-                            )
-                    )*1.5*level,
-                            1
-                    );
+            int speed;
+            if(
+//                    MathHelper.abs((float) user.getVelocity().x)+MathHelper.abs((float) user.getVelocity().z)
+                    MathHelper.sqrt((float)(
+                            MathHelper.square(user.getVelocity().x)
+                                    +
+                                    MathHelper.square(user.getVelocity().y)))
+                    >MathHelper.abs((float) user.getVelocity().y)) {
+                speed =
+                        MathHelper.roundDownToMultiple(
+                                MathHelper.sqrt((float) (
+                                                MathHelper.square(user.getVelocity().x)
+                                                        +
+                                                        MathHelper.square(user.getVelocity().y)
+                                                        +
+                                                        MathHelper.square(user.getVelocity().z)
+                                        )
+                                ) * 5,
+                                1
+                        );
+            } else {
+                speed = MathHelper.roundDownToMultiple(user.fallDistance/2, 1);
+            }
             target.timeUntilRegen = 0;
             if(user instanceof PlayerEntity plr) {
                 target.damage(sources.playerAttack(plr), speed);
             } else {
                 target.damage(sources.mobAttack(user), speed);
             }
+            Keranite.LOGGER.info(String.valueOf(speed));
+            user.fallDistance = -3;
         }
     }
 }
