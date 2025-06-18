@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.generic404_.keranite.Keranite;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -12,7 +13,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    public static final Block KERANITE_BLOCK = registerBlock("keranite_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK).hardness(75).luminance(6)));
+    public static final Block KERANITE_BLOCK = registerBlock("keranite_block", new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK).hardness(75).luminance(6).instrument(Instrument.BIT)));
     public static final Block KERANITE_ORE = registerBlock("keranite_ore", new Block(FabricBlockSettings.copyOf(Blocks.ANCIENT_DEBRIS).luminance(2)));
 
     private static Block registerBlock(String name, Block block) {

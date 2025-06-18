@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "keranite:item/disposable_callback_token",
+    "layer1": "keranite:item/callback_token_charged"
+  }
+}
