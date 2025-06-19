@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "1 3",
+    "2 2",
+    "1 3"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:light_blue_wool"
+    },
+    "2": {
+      "item": "minecraft:white_wool"
+    },
+    "3": {
+      "item": "minecraft:pink_wool"
+    }
+  },
+  "result": {
+    "item": "keranite:thighhighs_trans",
+    "count": 1
+  }
+}

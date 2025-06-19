@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "b b",
+    "p p",
+    "b b"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:black_wool"
+    },
+    "p": {
+      "item": "minecraft:pink_wool"
+    }
+  },
+  "result": {
+    "item": "keranite:thighhighs_blue",
+    "count": 1
+  }
+}

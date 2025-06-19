@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "1 4",
+    "2 5",
+    "3 6"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:pink_wool"
+    },
+    "2": {
+      "item": "minecraft:red_wool"
+    },
+    "3": {
+      "item": "minecraft:orange_wool"
+    },
+    "4": {
+      "item": "minecraft:yellow_wool"
+    },
+    "5": {
+      "item": "minecraft:green_wool"
+    },
+    "6": {
+      "item": "minecraft:blue_wool"
+    }
+  },
+  "result": {
+    "item": "keranite:thighhighs_gay",
+    "count": 1
+  }
+}
