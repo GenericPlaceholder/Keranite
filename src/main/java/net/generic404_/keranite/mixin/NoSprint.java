@@ -1,29 +1,26 @@
 package net.generic404_.keranite.mixin;
 
-import net.minecraft.client.Keyboard;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import net.generic404_.keranite.effect.ModEffects;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Keyboard.class)
+// thank you so much contributors of Supplementaries, i couldnt figure this out if i tried.
+
+@Mixin(ClientPlayerEntity.class)
 public abstract class NoSprint {
-	@Shadow @Final private MinecraftClient client;
+	@Shadow @Final protected MinecraftClient client;
 
-
-
-	@Inject(method="onKey",at = @At("HEAD"), cancellable = true)
-	private void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo callbackInfo) {
-		MinecraftClient client = MinecraftClient.getInstance();
-		KeyBinding sprint = client.options.sprintKey;
-		/*if(sprint.isPressed()){
-			sprint.setPressed(false);
-			KeyBinding.unpressAll();
-			callbackInfo.cancel();
-        }*/
-	}
+	@ModifyReturnValue(method = "canSprint", at=@At("RETURN"))
+	private boolean canSprint(boolean original) {
+        assert this.client.player != null;
+        StatusEffectInstance charged = this.client.player.getStatusEffect(ModEffects.CHARGED);
+		StatusEffectInstance shocked = this.client.player.getStatusEffect(ModEffects.SHOCKED);
+		return charged == null && shocked == null && original;
+    }
 }
