@@ -17,11 +17,7 @@ public class Shockwave extends Enchantment {
         return 1;
     }
     @Override
-    public int getMaxLevel() {
-        return 1;
-    }
-    @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.KERANITE_BROADSWORD)||stack.isOf(ModItems.KERANITE_VERYBROADSWORD);
+        return stack.isOf(ModItems.BROADSWORD)||stack.isOf(ModItems.VERYBROADSWORD)||stack.isOf(ModItems.JAVELIN);
     }
 }

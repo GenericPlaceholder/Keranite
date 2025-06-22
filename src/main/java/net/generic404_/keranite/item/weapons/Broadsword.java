@@ -5,9 +5,11 @@ import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.damagetype.ModDamageTypes;
+import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
 import net.generic404_.keranite.util.NearbyUtil;
 import net.generic404_.keranite.util.RandomUtil;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -52,18 +54,8 @@ public class Broadsword extends SwordItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        String enchantz = user.getStackInHand(hand).getEnchantments().toString();
-        String[] enchants = enchantz.split("\"");
-        boolean hasConduct = false;
-        boolean hasShockwave = false;
-        for (String enchant : enchants) {
-            if (enchant.equals("keranite:conductor")) {
-                hasConduct = true;
-            }
-            if (enchant.equals("keranite:shockwave")) {
-                hasShockwave = true;
-            }
-        }
+        boolean hasConduct = EnchantmentHelper.getLevel(ModEnchantments.CONDUCTOR, user.getStackInHand(hand)) > 0;
+        boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, user.getStackInHand(hand)) > 0;
         if (hasConduct) {
             NbtCompound tag = user.getStackInHand(hand).getOrCreateNbt();
             int maxmeter = 10;

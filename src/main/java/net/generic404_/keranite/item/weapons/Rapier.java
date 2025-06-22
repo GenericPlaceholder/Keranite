@@ -4,9 +4,11 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.effect.ModEffects;
+import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
 import net.generic404_.keranite.util.NearbyUtil;
 import net.generic404_.keranite.util.RandomUtil;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -15,8 +17,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -47,20 +47,8 @@ public class Rapier extends SwordItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
             ArrayList<World> NearbyWorlds = NearbyUtil.getWorlds(user, 100, user.getBlockPos());
-
-            NbtList enchants = user.getStackInHand(hand).getEnchantments();
-            boolean hasVanish = false;
-            boolean hasGust = false;
-            for (NbtElement element : enchants) {
-                for (String elment : element.toString().split("\"")) {
-                    if(elment.equals("keranite:vanish")) {
-                        hasVanish = true;
-                    }
-                    if(elment.equals("keranite:gust")) {
-                        hasGust = true;
-                    }
-                }
-            }
+            boolean hasVanish = EnchantmentHelper.getLevel(ModEnchantments.VANISH, user.getStackInHand(hand)) > 0;
+            boolean hasGust = EnchantmentHelper.getLevel(ModEnchantments.GUST, user.getStackInHand(hand)) > 0;
             if (hasVanish) {
                 user.setVelocity(0, 0.2, 0);
                 user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));

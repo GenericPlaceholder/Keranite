@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/keranite_broadsword_charged"
+    "layer0": "keranite:item/broadsword"
   },
   "gui_light": "front",
   "display": {
@@ -38,7 +38,8 @@
       "scale": [2, 2, 2]
     },
     "fixed": {
-      "translation": [2, 2, 0]
+      "rotation": [0,0,90],
+      "translation": [-0.8, 0.8, 0]
     }
   }
 }

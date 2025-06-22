@@ -20,12 +20,14 @@ public class ModItemGroups {
                         entries.add(ModItems.KERANITE_INGOT);
                         entries.add(ModBlocks.KERANITE_BLOCK);
                         entries.add(ModBlocks.KERANITE_ORE);
+                        entries.add(ModBlocks.RAW_KERANITE_BLOCK);
 
                         entries.add(ModItems.CALLBACK_TOKEN);
                         entries.add(ModItems.DISPOSABLE_CALLBACK_TOKEN);
 
-                        entries.add(ModItems.KERANITE_BROADSWORD);
-                        entries.add(ModItems.KERANITE_RAPIER);
+                        entries.add(ModItems.BROADSWORD);
+                        entries.add(ModItems.RAPIER);
+                        entries.add(ModItems.JAVELIN);
 
                         entries.add(ModItems.LIGHT_HELMET);
                         entries.add(ModItems.LIGHT_CHESTPLATE);

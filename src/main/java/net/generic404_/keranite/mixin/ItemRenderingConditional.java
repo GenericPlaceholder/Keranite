@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ItemRenderingConditional {
     @Inject(method= "renderItem",at=@At("HEAD"),cancellable = true)
     private void onRenderItem(LivingEntity entity, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci){
-        if(stack.getItem() == ModItems.KERANITE_BROADSWORD) {
+        if(stack.getItem() == ModItems.BROADSWORD) {
             MinecraftClient client = MinecraftClient.getInstance();
 
             ItemRenderer ir = client.getItemRenderer();

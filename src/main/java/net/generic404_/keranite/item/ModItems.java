@@ -9,6 +9,7 @@ import net.generic404_.keranite.item.usable.CallbackToken;
 import net.generic404_.keranite.item.usable.DisposableCallbackToken;
 import net.generic404_.keranite.item.usable.MinorAnchor;
 import net.generic404_.keranite.item.weapons.Broadsword;
+import net.generic404_.keranite.item.weapons.Javelin;
 import net.generic404_.keranite.item.weapons.Rapier;
 import net.generic404_.keranite.item.weapons.Verybroadsword;
 import net.minecraft.item.ArmorItem;
@@ -26,9 +27,10 @@ public class ModItems {
 	public static final Item CALLBACK_TOKEN = registerItem("callback_token", new CallbackToken(new Item.Settings().maxCount(1).fireproof()));
 	public static final Item DISPOSABLE_CALLBACK_TOKEN = registerItem("disposable_callback_token", new DisposableCallbackToken(new Item.Settings().maxCount(16)));
 
-	public static final Item KERANITE_BROADSWORD = registerItem("keranite_broadsword", new Broadsword(new Item.Settings().fireproof()));
-	public static final Item KERANITE_RAPIER = registerItem("keranite_rapier", new Rapier(new Item.Settings().fireproof()));
-	public static final Item KERANITE_VERYBROADSWORD = registerItem("keranite_verybroadsword", new Verybroadsword(KeraniteToolMaterial.KERANITE, 15, -3.3f, new Item.Settings()));
+	public static final Item BROADSWORD = registerItem("broadsword", new Broadsword(new Item.Settings().fireproof()));
+	public static final Item RAPIER = registerItem("rapier", new Rapier(new Item.Settings().fireproof()));
+	public static final Item VERYBROADSWORD = registerItem("verybroadsword", new Verybroadsword(KeraniteToolMaterial.KERANITE, 15, -3.3f, new Item.Settings()));
+	public static final Item JAVELIN = registerItem("javelin",new Javelin(new Item.Settings().fireproof()));
 
 	public static final Item LIGHT_HELMET = registerItem("light_helmet", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.HELMET, new FabricItemSettings()));
 	public static final Item LIGHT_CHESTPLATE = registerItem("light_chestplate", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
@@ -54,8 +56,8 @@ public class ModItems {
 	private static void addItemsToTabCom(FabricItemGroupEntries entries){
 		entries.add(CALLBACK_TOKEN);
 		entries.add(DISPOSABLE_CALLBACK_TOKEN);
-		entries.add(KERANITE_BROADSWORD);
-		entries.add(KERANITE_RAPIER);
+		entries.add(BROADSWORD);
+		entries.add(RAPIER);
 	}
 
 	private static Item registerItem(String name, Item item){

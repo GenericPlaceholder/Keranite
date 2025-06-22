@@ -1,8 +1,7 @@
 {
-  "credit": "i reverse engineered amarite's stuff",
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/keranite_rapier"
+    "layer0": "keranite:item/javelin"
   },
   "gui_light": "front",
   "display": {

@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "keranite:keranite_verybroadsword",
-    "keranite:keranite_broadsword",
-    "keranite:keranite_rapier"
+    "keranite:verybroadsword",
+    "keranite:broadsword",
+    "keranite:rapier"
   ]
 }

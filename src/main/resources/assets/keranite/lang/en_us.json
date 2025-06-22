@@ -5,9 +5,10 @@
   "item.keranite.minor_keranite_anchor": "Minor Keranite Anchor",
   "item.keranite.callback_token": "Callback Token",
 
-  "item.keranite.keranite_broadsword": "Keranite Broadsword",
-  "item.keranite.keranite_rapier": "Keranite Rapier",
-  "item.keranite.keranite_verybroadsword": "Keranite Verybroadsword",
+  "item.keranite.broadsword": "Keranite Broadsword",
+  "item.keranite.rapier": "Keranite Rapier",
+  "item.keranite.verybroadsword": "Keranite Verybroadsword",
+  "item.keranite.javelin": "Keranite Javelin",
 
   "item.keranite.light_helmet": "Keranite Helmet",
   "item.keranite.light_chestplate": "Keranite Chestplate",
@@ -38,6 +39,8 @@
   "enchantment.keranite.gust.desc": "Moves nearby entities in the direction you're looking.",
   "enchantment.keranite.force": "Force",
   "enchantment.keranite.force.desc": "Adds extra damage based on total speed.",
+  "enchantment.keranite.lunge": "Lunge",
+  "enchantment.keranite.lunge.desc": "Allows you to perform a \"lunge\", which is basically just weaker riptide for when you're on land.",
 
   "death.attack.discharged": "%1$s couldn't handle the electrical discharge.",
   "death.attack.shockwave": "%1$s was killed by a shockwave.",

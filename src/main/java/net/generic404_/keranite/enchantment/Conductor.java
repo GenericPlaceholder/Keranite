@@ -35,12 +35,12 @@ public class Conductor extends Enchantment {
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.KERANITE_BROADSWORD);
+        return stack.isOf(ModItems.BROADSWORD);
     }
 
     public void onTargetDamaged(@NotNull LivingEntity user, Entity target, int level) {
         World world = user.getWorld();
-        if(user.getMainHandStack().getItem()==ModItems.KERANITE_BROADSWORD&& Objects.requireNonNull(user.getMainHandStack().getNbt()).getBoolean("charged")){
+        if(user.getMainHandStack().getItem()==ModItems.BROADSWORD && Objects.requireNonNull(user.getMainHandStack().getNbt()).getBoolean("charged")){
             if (target instanceof LivingEntity) {
                 ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(ModEffects.CHARGED, 300*level, 0));
                 ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(ModEffects.SHOCKED, 30*level, (-1)+level));

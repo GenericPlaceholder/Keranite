@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/keranite_broadsword"
+    "layer0": "keranite:item/broadsword"
   },
   "gui_light": "front",
   "display": {

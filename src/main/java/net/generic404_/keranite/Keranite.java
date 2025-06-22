@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.generic404_.keranite.block.ModBlocks;
+import net.generic404_.keranite.block.entity.CustomBlockEntities;
 import net.generic404_.keranite.effect.ModEffects;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.ModItemGroups;
@@ -41,5 +42,6 @@ public class Keranite implements ModInitializer {
 		ModEffects.registerModEffects();
 		ModEnchantments.registerModEnchants();
 		ParticleInitializer.initialize();
+		CustomBlockEntities.initialize();
 	}
 }

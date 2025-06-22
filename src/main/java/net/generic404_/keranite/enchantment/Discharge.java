@@ -21,18 +21,13 @@ public class Discharge extends Enchantment {
     public Discharge() {
         super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
-
-    @Override
-    public int getMinLevel() {
-        return 1;
-    }
     @Override
     public int getMaxLevel() {
         return 3;
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.KERANITE_BROADSWORD)||stack.isOf(ModItems.KERANITE_RAPIER);
+        return stack.isOf(ModItems.BROADSWORD)||stack.isOf(ModItems.RAPIER);
     }
 
     @Override

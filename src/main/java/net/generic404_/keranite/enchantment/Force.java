@@ -25,12 +25,8 @@ public class Force extends Enchantment {
         return 1;
     }
     @Override
-    public int getMaxLevel() {
-        return 1;
-    }
-    @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.KERANITE_RAPIER)||stack.getItem() instanceof ShovelItem;
+        return stack.isOf(ModItems.RAPIER)||stack.getItem() instanceof ShovelItem;
     }
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {

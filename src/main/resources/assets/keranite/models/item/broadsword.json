@@ -1,20 +1,20 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/keranite_broadsword_gui"
+    "layer0": "keranite:item/broadsword_gui"
   },
   "overrides": [
     {
       "predicate": {
         "custom_model_data": 0
       },
-      "model": "keranite:item/keranite_broadsword_handheld"
+      "model": "keranite:item/broadsword_handheld"
     },
     {
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "keranite:item/keranite_broadsword_handheld_charged"
+      "model": "keranite:item/broadsword_handheld_charged"
     }
   ]
 }

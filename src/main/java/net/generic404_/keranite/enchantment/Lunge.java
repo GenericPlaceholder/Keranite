@@ -7,9 +7,9 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class Gust extends Enchantment {
-    public Gust() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+public class Lunge extends Enchantment {
+    public Lunge() {
+        super(Rarity.UNCOMMON, EnchantmentTarget.TRIDENT, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -18,6 +18,6 @@ public class Gust extends Enchantment {
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.RAPIER);
+        return stack.isOf(ModItems.JAVELIN);
     }
 }
