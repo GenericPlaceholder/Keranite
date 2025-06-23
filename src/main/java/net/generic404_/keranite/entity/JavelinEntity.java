@@ -1,9 +1,10 @@
 package net.generic404_.keranite.entity;
 
 import net.generic404_.keranite.Keranite;
-import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.ModItems;
+import net.generic404_.keranite.util.MiscUtil;
+import net.generic404_.keranite.util.NearbyUtil;
 import net.generic404_.keranite.util.SpecialUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -24,6 +25,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class JavelinEntity extends TridentEntity {
     private static final TrackedData<Boolean> ENCHANTED = DataTracker.registerData(JavelinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -80,18 +84,18 @@ public class JavelinEntity extends TridentEntity {
         }
 
         // Disabled "aim assist" code for when I make the Gust enchant work with this. Causes a crash when throwing the Javelin.
-//        if(!this.inGround){
-//            ArrayList<Entity> except = new ArrayList<>();
-//            except.add(this);
-//            except.add(this.getOwner());
-//            ArrayList<Entity> possibleTarget = NearbyUtil.getNearestEntitiesInConeExcept(getWorld(), this.getPos(), this.getRotationVector(), 50, 50, 1, except);
-//            if(!possibleTarget.isEmpty()) {
-//                Entity target = possibleTarget.get(0);
-//                Vec3d rotation = target.getPos().relativize(this.getPos()).normalize();
-//                this.setRotation((float) this.getRotationVector().lerp(rotation, 0.2).x, (float) this.getRotationVector().lerp(rotation, 0.2).y);
-//                this.setVelocity(this.getVelocity().multiply(this.getRotationVector()));
-//            }
-//        }
+        if(!this.inGround&&!dealtDamage&&EnchantmentHelper.getLevel(ModEnchantments.GUST,javelinStack)>0){
+            ArrayList<Entity> except = new ArrayList<>();
+            except.add(this);
+            except.add(this.getOwner());
+            ArrayList<Entity> possibleTarget = NearbyUtil.getNearestEntitiesInConeExcept(getWorld(), this.getPos(), this.getRotationVector(), 50, 40, 1, except);
+            if(!possibleTarget.isEmpty()) {
+                Entity target = possibleTarget.get(0);
+                Vec3d rotation = MiscUtil.getEntityCenterPos(target).relativize(this.getPos()).normalize();
+                this.setRotation((float) this.getRotationVector().lerp(rotation, 0.2).x, (float) this.getRotationVector().lerp(rotation, 0.2).y);
+                this.setVelocity(rotation.multiply(-2));
+            }
+        }
 
         super.tick();
     }
@@ -115,8 +119,15 @@ public class JavelinEntity extends TridentEntity {
     @Override
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
-        entityHitResult.getEntity().damage(ModDamageTypes.of(getWorld(), ModDamageTypes.DISCHARGED), 5);
 //        this.discard();
+        boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, javelinStack)>0;
+        if(hasShockwave){
+            SpecialUtil.createShockwave(getWorld(), entityHitResult.getEntity().getBlockPos(), 7, 2,5);
+        }
+        boolean hasGust = EnchantmentHelper.getLevel(ModEnchantments.GUST, javelinStack)>0;
+        if(hasGust){
+            entityHitResult.getEntity().addVelocity(Objects.requireNonNull(this.getOwner()).getRotationVector().multiply(3));
+        }
         super.onEntityHit(entityHitResult);
     }
 

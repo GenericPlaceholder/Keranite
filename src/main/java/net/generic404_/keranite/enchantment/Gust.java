@@ -18,6 +18,6 @@ public class Gust extends Enchantment {
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.RAPIER);
+        return stack.isOf(ModItems.RAPIER)||stack.isOf(ModItems.JAVELIN);
     }
 }

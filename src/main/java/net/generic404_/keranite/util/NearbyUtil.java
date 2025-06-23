@@ -101,19 +101,18 @@ public class NearbyUtil {
     public static ArrayList<Entity> getNearestEntitiesInConeExcept(World world, Vec3d origin, Vec3d rotationVector, float maxDistance, float degrees, int maxAmount, ArrayList<Entity> exceptions){
         ArrayList<Entity> entities = NearbyUtil.getByWorld(world,maxDistance,MiscUtil.Vec3dToBlockPos(origin));
         if(entities.isEmpty()){return new ArrayList<>();}
-        ArrayList<Entity> entities1 = entities;
-        // TODO: Fix ConcurrentModificationException in line below. No clue what is happening.
-        for(Entity entity : entities1){
-            for(Entity entity1 : exceptions){
-                if(entity==entity1){
-                    entities.remove(entity);
-                }
-            }
-        }
         entities = NearbyUtil.sortByNearestEntities(origin, entities, maxAmount, maxDistance);
         ArrayList<Entity> filteredEntities = new ArrayList<>();
         for(Entity entity : entities){
-            if(MiscUtil.isPositionInConeByRotation(origin, rotationVector, maxDistance, entity.getPos(), MiscUtil.degreesToRadians(degrees))){
+            boolean isExempt = false;
+            for(Entity exception : exceptions){
+                if(exception==entity){
+                    isExempt = true;
+                    break;
+                }
+            }
+
+            if(!isExempt&&MiscUtil.isPositionInConeByRotation(origin, rotationVector, maxDistance, entity.getPos(), MiscUtil.degreesToRadians(degrees))){
                 if(filteredEntities.size()<maxAmount){
                     filteredEntities.add(entity);
                 }else{

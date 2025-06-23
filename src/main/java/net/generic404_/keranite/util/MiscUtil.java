@@ -1,5 +1,6 @@
 package net.generic404_.keranite.util;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -41,7 +42,7 @@ public class MiscUtil {
     }
 
     static public boolean isPositionInConeByRotation(Vec3d origin, Vec3d rotationVector, float maxDistance, Vec3d position, float aperture){
-        Vec3d endpoint = origin.add(rotationVector.multiply(maxDistance));
+        Vec3d endpoint = origin.add(rotationVector.multiply(maxDistance).multiply(new Vec3d(1,1,-1).multiply(-1)));
 
         // This is for our convenience
         float halfAperture = aperture/2.f;
@@ -86,5 +87,9 @@ public class MiscUtil {
 
     static public BlockPos Vec3dToBlockPos(Vec3d vec3d){
         return new BlockPos(MathHelper.roundDownToMultiple(vec3d.x,1),MathHelper.roundDownToMultiple(vec3d.y,1),MathHelper.roundDownToMultiple(vec3d.z,1));
+    }
+
+    static public Vec3d getEntityCenterPos(Entity target){
+        return target.getPos().add(0,target.getHeight(),0);
     }
 }
