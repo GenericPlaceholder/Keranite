@@ -50,11 +50,14 @@ public class Force extends Enchantment {
                                                         +
                                                         MathHelper.square(user.getVelocity().z)
                                         )
-                                ) * 5,
+                                ) * 2.5,
                                 1
                         );
             } else {
-                speed = MathHelper.roundDownToMultiple(user.fallDistance/2, 1);
+                speed = MathHelper.roundDownToMultiple(user.fallDistance/5, 1);
+            }
+            if(speed>50){
+                speed = 50;
             }
             target.timeUntilRegen = 0;
             if(user instanceof PlayerEntity plr) {

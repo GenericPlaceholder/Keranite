@@ -53,7 +53,7 @@ public abstract class NameHider {
 
     @ModifyReturnValue(method = "getName", at=@At("RETURN"))
     private Text nameChanger(Text original) {
-        StatusEffectInstance plrEffect = self.getStatusEffect(ModEffects.CORRUPTED);
+        StatusEffectInstance plrEffect = self.getStatusEffect(ModEffects.OBFUSCATED);
         if(plrEffect!=null) {
             ticks -= 1;
             if(ticks==0){

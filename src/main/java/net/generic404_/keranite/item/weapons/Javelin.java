@@ -3,10 +3,8 @@ package net.generic404_.keranite.item.weapons;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
-import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.entity.JavelinEntity;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -59,7 +57,8 @@ public class Javelin extends SwordItem {
         if (user instanceof PlayerEntity playerEntity) {
             int i = this.getMaxUseTime(stack) - remainingUseTicks;
             if (i >= 10) {
-                int j = EnchantmentHelper.getLevel(ModEnchantments.LUNGE, stack);
+//                int j = EnchantmentHelper.getLevel(ModEnchantments.LUNGE, stack);
+                int j = 0;
 
                 // normally this would have a "if on ground or j <= 0" but i want it to always work
                 if (!world.isClient) {
@@ -109,8 +108,6 @@ public class Javelin extends SwordItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
-            return TypedActionResult.fail(itemStack);
-        } else if (EnchantmentHelper.getLevel(ModEnchantments.LUNGE,itemStack) > 0 && !user.isOnGround()) {
             return TypedActionResult.fail(itemStack);
         } else {
             user.setCurrentHand(hand);

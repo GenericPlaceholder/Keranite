@@ -33,7 +33,7 @@ public class ModItems {
 	public static final Item JAVELIN = registerItem("javelin",new Javelin(new Item.Settings().fireproof()));
 
 	public static final Item LIGHT_HELMET = registerItem("light_helmet", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.HELMET, new FabricItemSettings()));
-	public static final Item LIGHT_CHESTPLATE = registerItem("light_chestplate", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+	public static final Item LIGHT_CHESTPLATE = registerItem("light_chestplate", new KeraniteArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
 	public static final Item LIGHT_LEGGINGS = registerItem("light_leggings", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
 	public static final Item LIGHT_BOOTS = registerItem("light_boots", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 

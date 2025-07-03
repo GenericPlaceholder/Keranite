@@ -13,4 +13,6 @@ public class CustomEntities {
     public static final EntityType<JavelinEntity> JAVELIN_ENTITY_TYPE = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(Keranite.MOD_ID, "javelin_entity"), FabricEntityTypeBuilder.<JavelinEntity>create(SpawnGroup.MISC, JavelinEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25f,0.25f)).build());
+
+    public static void initialize() {}
 }

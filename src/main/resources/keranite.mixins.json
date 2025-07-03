@@ -3,6 +3,7 @@
   "package": "net.generic404_.keranite.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "NoFallDamage",
     "ShorterFollowRange",
     "nameHider.NameHider"
   ],

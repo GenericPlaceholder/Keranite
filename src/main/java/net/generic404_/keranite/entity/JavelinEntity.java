@@ -1,6 +1,5 @@
 package net.generic404_.keranite.entity;
 
-import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.ModItems;
 import net.generic404_.keranite.util.MiscUtil;
@@ -34,7 +33,7 @@ public class JavelinEntity extends TridentEntity {
     private ItemStack javelinStack = new ItemStack(ModItems.JAVELIN);
     private boolean dealtDamage;
 
-    public JavelinEntity(EntityType<? extends TridentEntity> entityType, World world) {
+    public JavelinEntity(EntityType<? extends JavelinEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -110,8 +109,11 @@ public class JavelinEntity extends TridentEntity {
 //        this.discard();
         boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, javelinStack)>0;
         if(hasShockwave){
-            SpecialUtil.createShockwave(getWorld(), blockHitResult.getBlockPos(), 7, 2,5);
-            Keranite.LOGGER.info(String.valueOf(hasShockwave));
+            SpecialUtil.createShockwave(getWorld(), blockHitResult.getBlockPos().toCenterPos(), 4, 2,4.5);
+        }
+        boolean hasMagnet = EnchantmentHelper.getLevel(ModEnchantments.MAGNETIZED, javelinStack)>0;
+        if(hasMagnet){
+            SpecialUtil.createShockwave(getWorld(), blockHitResult.getBlockPos().toCenterPos(), 4, 2,-3);
         }
         super.onBlockHit(blockHitResult);
     }
@@ -122,13 +124,18 @@ public class JavelinEntity extends TridentEntity {
 //        this.discard();
         boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, javelinStack)>0;
         if(hasShockwave){
-            SpecialUtil.createShockwave(getWorld(), entityHitResult.getEntity().getBlockPos(), 7, 2,5);
+            SpecialUtil.createShockwave(getWorld(), entityHitResult.getEntity().getPos(), 4, 2,3);
+        }
+        boolean hasMagnet = EnchantmentHelper.getLevel(ModEnchantments.MAGNETIZED, javelinStack)>0;
+        if(hasMagnet){
+            SpecialUtil.createShockwave(getWorld(), entityHitResult.getEntity().getPos(), 4, 2,-3);
         }
         boolean hasGust = EnchantmentHelper.getLevel(ModEnchantments.GUST, javelinStack)>0;
         if(hasGust){
             entityHitResult.getEntity().addVelocity(Objects.requireNonNull(this.getOwner()).getRotationVector().multiply(3));
         }
         super.onEntityHit(entityHitResult);
+        dealtDamage = true;
     }
 
     private boolean isOwnerAlive() {

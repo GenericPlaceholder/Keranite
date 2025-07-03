@@ -13,7 +13,7 @@ public class ModEnchantments {
     public static final Enchantment SHOCKWAVE = registerEnchant("shockwave", new Shockwave());
     public static final Enchantment GUST = registerEnchant("gust", new Gust());
     public static final Enchantment FORCE = registerEnchant("force", new Force());
-    public static final Enchantment LUNGE = registerEnchant("lunge", new Lunge());
+    public static final Enchantment MAGNETIZED = registerEnchant("magnetized", new Magnetized());
 
     private static Enchantment registerEnchant(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(Keranite.MOD_ID, name), enchantment);

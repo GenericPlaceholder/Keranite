@@ -34,7 +34,7 @@ public class Keranite implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, KERANITE_ORE_PLACED_KEY);
+		BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, KERANITE_ORE_PLACED_KEY);
 
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
@@ -43,5 +43,6 @@ public class Keranite implements ModInitializer {
 		ModEnchantments.registerModEnchants();
 		ParticleInitializer.initialize();
 		CustomBlockEntities.initialize();
+//		CustomEntities.initialize();
 	}
 }

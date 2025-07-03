@@ -7,6 +7,7 @@ import net.generic404_.keranite.util.NearbyUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 
 public class RawKeraniteBlockEntity extends BlockEntity {
     public RawKeraniteBlockEntity(BlockPos pos, BlockState state) {
-        super(CustomBlockEntities.RAW_KERANITE_BLOCK_ENTITY_TYPE, pos, state);
+        //super(CustomBlockEntities.RAW_KERANITE_BLOCK_ENTITY_TYPE, pos, state);
+        super(BlockEntityType.FURNACE, pos, state);
     }
 
     int heat = 0;

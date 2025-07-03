@@ -3,12 +3,10 @@ package net.generic404_.keranite.item.weapons;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
-import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
 import net.generic404_.keranite.util.NearbyUtil;
-import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -74,13 +72,13 @@ public class Broadsword extends SwordItem {
                 ent.addVelocity(((ent.getPos().subtract(user.getPos())).multiply(6-user.distanceTo(ent))).multiply(0.15));
             }
             user.fallDistance = -5;
-            world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,1f,0.8f);
-            world.playSoundFromEntity(null,user, SoundEvents.ENTITY_DRAGON_FIREBALL_EXPLODE, SoundCategory.PLAYERS,0.8f,1f);
-            world.playSoundFromEntity(null,user, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS,0.6f,1.4f);
-            for(int i=0;i<100;i++) {
-                world.addParticle(ParticleTypes.ASH, user.getX()+RandomUtil.getRandomFloat(-5,5), user.getY()+RandomUtil.getRandomFloat(-3,3), user.getZ()+RandomUtil.getRandomFloat(-5,5),0,0,0);
+            if(world instanceof ServerWorld serverWorld){
+                serverWorld.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,1f,0.8f);
+                serverWorld.playSoundFromEntity(null,user, SoundEvents.ENTITY_DRAGON_FIREBALL_EXPLODE, SoundCategory.PLAYERS,0.8f,1f);
+                serverWorld.playSoundFromEntity(null,user, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS,0.6f,1.4f);
+                serverWorld.spawnParticles(ParticleTypes.EXPLOSION.getType(), user.getX(), user.getY(), user.getZ(), 10, 0, 0, 0, 0);
+                serverWorld.spawnParticles(ParticleTypes.ASH.getType(), user.getX(), user.getY(), user.getZ(), 100, 5, 3, 5, 0.2);
             }
-            world.addParticle(ParticleTypes.EXPLOSION,user.getX(),user.getY(),user.getZ(),0,0,0);
             user.getItemCooldownManager().set(this, 80);
             return TypedActionResult.consume(user.getStackInHand(hand));
         } else {
@@ -90,10 +88,7 @@ public class Broadsword extends SwordItem {
 
             if(world instanceof ServerWorld serverWorld) {
                 serverWorld.playSoundFromEntity(null, user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS, 0.6f, 0.8f);
-                for (int i = 0; i < 5; i++) {
-                    serverWorld.addParticle(ParticleTypes.CLOUD, user.getX(), user.getY(), user.getZ(), (double) RandomUtil.getRandomInt(-1, 1) / 100, (double) RandomUtil.getRandomInt(-1, 1) / 100, (double) RandomUtil.getRandomInt(-1, 1) / 100);
-                }
-                Keranite.LOGGER.info("Broadsword dash particles summoned on ServerWorld!");
+                serverWorld.spawnParticles(ParticleTypes.CLOUD.getType(), user.getX(), user.getY(), user.getZ(), 5, 0,0,0,0.01);
             }
 
             user.getItemCooldownManager().set(this, 30);

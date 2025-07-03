@@ -22,7 +22,7 @@ public abstract class hideUUID {
 
     @ModifyReturnValue(method = "getHoverEvent",at=@At("RETURN"))
     private HoverEvent obfuscateUUID(HoverEvent original) {
-        if (self instanceof LivingEntity livingEntity&&livingEntity.hasStatusEffect(ModEffects.CORRUPTED)){
+        if (self instanceof LivingEntity livingEntity&&livingEntity.hasStatusEffect(ModEffects.OBFUSCATED)){
             return new HoverEvent(HoverEvent.Action.SHOW_ENTITY, new HoverEvent.EntityContent(EntityType.MARKER, UUID.randomUUID(), Text.literal("Horse").setStyle(Style.EMPTY.withObfuscated(true))));
         } else { return original; }
     }

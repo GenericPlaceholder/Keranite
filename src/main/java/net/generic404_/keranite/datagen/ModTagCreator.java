@@ -17,6 +17,8 @@ public class ModTagCreator {
     }
 
     public static class Items {
+        public static final TagKey<Item> PREVENTS_FALLDAMAGE = createTag("prevents_falldamage");
+
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(Keranite.MOD_ID, name));
         }
