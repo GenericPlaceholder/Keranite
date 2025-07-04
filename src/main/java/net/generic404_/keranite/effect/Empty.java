@@ -3,8 +3,8 @@ package net.generic404_.keranite.effect;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
-public class Vanishing extends StatusEffect {
-    protected Vanishing(StatusEffectCategory category, int color) {
+public class Empty extends StatusEffect {
+    public Empty(StatusEffectCategory category, int color) {
         super(category, color);
     }
 

@@ -29,9 +29,11 @@ public abstract class hideUUID {
 
     @ModifyReturnValue(method = "getDisplayName",at=@At("RETURN"))
     private Text obfuscateDisplayUUID(Text original){
-        return Team.decorateName(self.getScoreboardTeam(), self.getName())
-                .styled(style -> style.withHoverEvent(
-                        new HoverEvent(HoverEvent.Action.SHOW_ENTITY, new HoverEvent.EntityContent(EntityType.MARKER, UUID.randomUUID(), Text.literal("Horse").setStyle(Style.EMPTY.withObfuscated(true))))
-                ).withInsertion(UUID.randomUUID().toString()));
+        if (self instanceof LivingEntity livingEntity&&livingEntity.hasStatusEffect(ModEffects.OBFUSCATED)){
+            return Team.decorateName(self.getScoreboardTeam(), self.getName())
+                    .styled(style -> style.withHoverEvent(
+                            new HoverEvent(HoverEvent.Action.SHOW_ENTITY, new HoverEvent.EntityContent(EntityType.PLAYER, UUID.randomUUID(), Text.literal("Horse").setStyle(Style.EMPTY.withObfuscated(true))))
+                    ).withInsertion(UUID.randomUUID().toString()));
+        } else { return original; }
     }
 }
