@@ -85,10 +85,7 @@ public class JavelinEntity extends TridentEntity {
 
         // Disabled "aim assist" code for when I make the Gust enchant work with this. Causes a crash when throwing the Javelin.
         if(!this.inGround&&!dealtDamage&&EnchantmentHelper.getLevel(ModEnchantments.GUST,javelinStack)>0){
-            ArrayList<Entity> except = new ArrayList<>();
-            except.add(this);
-            except.add(this.getOwner());
-            ArrayList<Entity> possibleTarget = NearbyUtil.getNearestEntitiesInConeExcept(getWorld(), this.getPos(), this.getRotationVector(), 50, 40, 1, except);
+            ArrayList<Entity> possibleTarget = NearbyUtil.getNearestEntitiesInCone(getWorld(), this.getPos(), this.getRotationVector(), 50, 40, 1, this, this.getOwner());
             if(!possibleTarget.isEmpty()) {
                 Entity target = possibleTarget.get(0);
                 Vec3d rotation = MiscUtil.getEntityCenterPos(target).relativize(this.getPos()).normalize();
@@ -134,6 +131,7 @@ public class JavelinEntity extends TridentEntity {
         boolean hasGust = EnchantmentHelper.getLevel(ModEnchantments.GUST, javelinStack)>0;
         if(hasGust){
             entityHitResult.getEntity().addVelocity(Objects.requireNonNull(this.getOwner()).getRotationVector().multiply(3));
+            entityHitResult.getEntity().timeUntilRegen = 20;
         }
         super.onEntityHit(entityHitResult);
         dealtDamage = true;

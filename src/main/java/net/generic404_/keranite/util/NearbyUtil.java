@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class NearbyUtil {
     // TODO: Clean this up at some point. It's too messy.
@@ -76,39 +77,19 @@ public class NearbyUtil {
         return closestEntities;
     }
 
-    public static ArrayList<Entity> getNearestEntitiesInCone(World world, Vec3d origin, Vec3d rotationVector, float maxDistance, float degrees, int maxAmount){
-        ArrayList<Entity> entities = NearbyUtil.getByWorld(world,maxDistance,MiscUtil.Vec3dToBlockPos(origin));
-        entities = NearbyUtil.sortByNearestEntities(origin, entities, maxAmount, maxDistance);
-        ArrayList<Entity> filteredEntities = new ArrayList<>();
-        for(Entity entity : entities){
-            if(MiscUtil.isPositionInConeByRotation(origin, rotationVector, maxDistance, entity.getPos(), MiscUtil.degreesToRadians(degrees))){
-                if(filteredEntities.size()<maxAmount){
-                    filteredEntities.add(entity);
-                }else{
-                    int counter0 = 0;
-                    for (Entity entity1 : filteredEntities) {
-                        if (entity.getPos().distanceTo(origin)<entity1.getPos().distanceTo(origin)&&entity.getPos().distanceTo(origin)<=maxDistance) {
-                            filteredEntities.set(counter0, entity);
-                        }
-                        counter0++;
-                    }
-                }
-            }
-        }
-        return filteredEntities;
-    }
-
-    public static ArrayList<Entity> getNearestEntitiesInConeExcept(World world, Vec3d origin, Vec3d rotationVector, float maxDistance, float degrees, int maxAmount, ArrayList<Entity> exceptions){
+    public static ArrayList<Entity> getNearestEntitiesInCone(World world, Vec3d origin, Vec3d rotationVector, float maxDistance, float degrees, int maxAmount, Entity... exceptions){
         ArrayList<Entity> entities = NearbyUtil.getByWorld(world,maxDistance,MiscUtil.Vec3dToBlockPos(origin));
         if(entities.isEmpty()){return new ArrayList<>();}
         entities = NearbyUtil.sortByNearestEntities(origin, entities, maxAmount, maxDistance);
         ArrayList<Entity> filteredEntities = new ArrayList<>();
         for(Entity entity : entities){
             boolean isExempt = false;
-            for(Entity exception : exceptions){
-                if(exception==entity){
-                    isExempt = true;
-                    break;
+            if (exceptions != null) {
+                for (Entity exception : exceptions) {
+                    if (Objects.equals(entity, exception)) {
+                        isExempt = true;
+                        break;
+                    }
                 }
             }
 
