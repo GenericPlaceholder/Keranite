@@ -1,6 +1,5 @@
 package net.generic404_.keranite.enchantment;
 
-import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.item.ModItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -50,11 +49,11 @@ public class Force extends Enchantment {
                                                         +
                                                         MathHelper.square(user.getVelocity().z)
                                         )
-                                ) * 2.5,
+                                ) * 2,
                                 1
                         );
             } else {
-                speed = MathHelper.roundDownToMultiple(user.fallDistance/5, 1);
+                speed = MathHelper.roundDownToMultiple(user.fallDistance/6, 1);
             }
             if(speed>50){
                 speed = 50;
@@ -65,7 +64,6 @@ public class Force extends Enchantment {
             } else {
                 target.damage(sources.mobAttack(user), speed);
             }
-            Keranite.LOGGER.info(String.valueOf(speed));
             user.fallDistance = -3;
         }
     }

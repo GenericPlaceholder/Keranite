@@ -44,7 +44,14 @@
   "enchantment.keranite.lunge.desc": "Allows you to perform a \"lunge\", which is basically just weaker riptide for when you're on land.",
 
   "death.attack.discharged": "%1$s couldn't handle the electrical discharge.",
+  "death.attack.discharged.player": "%1$s couldn't handle %2$s's electrical discharge.",
   "death.attack.shockwave": "%1$s was killed by a shockwave.",
+  "death.attack.shockwave.player": "%1$s was killed by %2$s's shockwave.",
+
+  "effect.keranite.obfuscated": "Obfuscated",
+  "effect.keranite.charged": "Charged",
+  "effect.keranite.shocked": "Shocked",
+  "effect.keranite.vanishing": "Vanishing",
 
   "block.keranite.keranite_block": "Keranite Block",
   "block.keranite.keranite_ore": "Keranite Ore"

@@ -30,15 +30,15 @@ public class Javelin extends SwordItem {
     protected static final UUID ATTACKREACH_MODIFIER_UUID = UUID.fromString("a92256bc-0efa-47ed-aab1-adea724a852c");
     protected static final UUID REACH_MODIFIER_UUID = UUID.fromString("603cbd44-8360-4df7-b10a-2670a4414694");
     public Javelin(Settings settings) {
-        super(KeraniteToolMaterial.KERANITE, 10, (1.1f - 4f), settings);
+        super(KeraniteToolMaterial.KERANITE, 9, (0.9f - 4f), settings);
     }
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.putAll(super.getAttributeModifiers(slot));
-        builder.put(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier(ATTACKREACH_MODIFIER_UUID, "Weapon Modifier", 0.8d, EntityAttributeModifier.Operation.ADDITION));
-        builder.put(ReachEntityAttributes.REACH, new EntityAttributeModifier(REACH_MODIFIER_UUID, "Weapon Modifier", 1.25d, EntityAttributeModifier.Operation.ADDITION));
+        builder.put(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier(ATTACKREACH_MODIFIER_UUID, "Weapon Modifier", 1.25d, EntityAttributeModifier.Operation.ADDITION));
+        builder.put(ReachEntityAttributes.REACH, new EntityAttributeModifier(REACH_MODIFIER_UUID, "Weapon Modifier", 1.5d, EntityAttributeModifier.Operation.ADDITION));
         return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getAttributeModifiers(slot);
     }
 
