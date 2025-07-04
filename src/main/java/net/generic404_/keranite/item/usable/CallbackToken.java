@@ -1,5 +1,7 @@
 package net.generic404_.keranite.item.usable;
 
+import net.generic404_.keranite.effect.ModEffects;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,15 +36,41 @@ public class CallbackToken extends Item {
                 token.getOrCreateNbt().putInt("CustomModelData",1);
             } else {
                 if(Objects.equals(String.valueOf(user.getWorld().getRegistryKey().getValue()), token.getNbt().getString("dimension"))) {
-                    if (world.isClient) {
-                        user.sendMessage(Text.of("[ Position Loaded ]"));
-                    }
-                    user.fallDistance = 0f;
-                    NbtCompound pos = token.getOrCreateNbt().getCompound("pos");
-                    user.setPosition(pos.getDouble("x"), pos.getDouble("y"), pos.getDouble("z"));
+                    if(!user.getAbilities().creativeMode) {
+                        if ((user.hasStatusEffect(ModEffects.WARPING) && user.getHealth() == user.getMaxHealth())) {
+                            if (world.isClient) {
+                                user.sendMessage(Text.of("[ Position Loaded ]"));
+                            }
+                            user.fallDistance = 0f;
+                            NbtCompound pos = token.getOrCreateNbt().getCompound("pos");
+                            user.setPosition(pos.getDouble("x"), pos.getDouble("y"), pos.getDouble("z"));
 //                    token.getOrCreateNbt().putBoolean("positionSaved", false);
 //                    token.getOrCreateNbt().putInt("CustomModelData", 0);
-                    user.incrementStat(Stats.USED.getOrCreateStat(this));
+                            user.removeStatusEffect(ModEffects.WARPING);
+                            user.incrementStat(Stats.USED.getOrCreateStat(this));
+                        } else if (user.hasStatusEffect(ModEffects.WARPING)) {
+                            if (world.isClient) {
+                                user.sendMessage(Text.of("[ Full Health Required ]"));
+                            }
+                        } else {
+                            user.setHealth(1);
+                            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARPING, 1200, 0, true, true, true));
+                            if (world.isClient) {
+                                user.sendMessage(Text.of("[ Get Full Health to Warp ]"));
+                            }
+                        }
+                    } else {
+                        if (world.isClient) {
+                            user.sendMessage(Text.of("[ Position Loaded ]"));
+                        }
+                        user.fallDistance = 0f;
+                        NbtCompound pos = token.getOrCreateNbt().getCompound("pos");
+                        user.setPosition(pos.getDouble("x"), pos.getDouble("y"), pos.getDouble("z"));
+//                      token.getOrCreateNbt().putBoolean("positionSaved", false);
+//                      token.getOrCreateNbt().putInt("CustomModelData", 0);
+                        user.removeStatusEffect(ModEffects.WARPING);
+                        user.incrementStat(Stats.USED.getOrCreateStat(this));
+                    }
                 }else{
                     if (world.isClient) {
                         user.sendMessage(Text.of("[ Position saved is in a different dimension ]"));

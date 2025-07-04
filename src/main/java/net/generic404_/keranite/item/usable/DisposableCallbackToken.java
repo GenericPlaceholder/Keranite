@@ -1,5 +1,7 @@
 package net.generic404_.keranite.item.usable;
 
+import net.generic404_.keranite.effect.ModEffects;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,7 +21,7 @@ public class DisposableCallbackToken extends Item {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack token = user.getStackInHand(hand);
-//            if (token.getNbt()!=null&&!token.getNbt().getBoolean("positionSaved")) {
+
         if (user.isSneaking()||token.getNbt()==null||!token.getNbt().getBoolean("positionSaved")) {
             if(world.isClient) {
                 user.sendMessage(Text.of("[ Position Saved ]"));
@@ -33,22 +35,37 @@ public class DisposableCallbackToken extends Item {
             token.getOrCreateNbt().putString("dimension", String.valueOf(user.getWorld().getRegistryKey().getValue()));
             token.getOrCreateNbt().putInt("CustomModelData",1);
         } else {
-            if(Objects.equals(String.valueOf(user.getWorld().getRegistryKey().getValue()), token.getNbt().getString("dimension"))) {
-                if (world.isClient) {
-                    user.sendMessage(Text.of("[ Position Loaded ]"));
-                }
-                user.fallDistance = 0f;
-                NbtCompound pos = token.getOrCreateNbt().getCompound("pos");
-                user.setPosition(pos.getDouble("x"), pos.getDouble("y"), pos.getDouble("z"));
-                token.getOrCreateNbt().putBoolean("positionSaved", false);
-                token.getOrCreateNbt().putInt("CustomModelData", 0);
-                user.incrementStat(Stats.USED.getOrCreateStat(this));
-                if (!user.getAbilities().creativeMode) {
-                    user.getStackInHand(hand).decrement(1);
-                }
-            }else{
-                if (world.isClient) {
-                    user.sendMessage(Text.of("[ Position saved is in a different dimension ]"));
+            if(!user.getAbilities().creativeMode) {
+                if (Objects.equals(String.valueOf(user.getWorld().getRegistryKey().getValue()), token.getNbt().getString("dimension"))) {
+                    if ((user.hasStatusEffect(ModEffects.WARPING) && user.getHealth() == user.getMaxHealth())) {
+                        if (world.isClient) {
+                            user.sendMessage(Text.of("[ Position Loaded ]"));
+                        }
+                        user.fallDistance = 0f;
+                        NbtCompound pos = token.getOrCreateNbt().getCompound("pos");
+                        user.setPosition(pos.getDouble("x"), pos.getDouble("y"), pos.getDouble("z"));
+                        token.getOrCreateNbt().putBoolean("positionSaved", false);
+                        token.getOrCreateNbt().putInt("CustomModelData", 0);
+                        user.removeStatusEffect(ModEffects.WARPING);
+                        user.incrementStat(Stats.USED.getOrCreateStat(this));
+                        if (!user.getAbilities().creativeMode) {
+                            user.getStackInHand(hand).decrement(1);
+                        }
+                    } else if (user.hasStatusEffect(ModEffects.WARPING)) {
+                        if (world.isClient) {
+                            user.sendMessage(Text.of("[ Full Health Required ]"));
+                        }
+                    } else {
+                        user.setHealth(1);
+                        user.addStatusEffect(new StatusEffectInstance(ModEffects.WARPING, 600, 0, true, true, true));
+                        if (world.isClient) {
+                            user.sendMessage(Text.of("[ Get Full Health to Warp ]"));
+                        }
+                    }
+                } else {
+                    if (world.isClient) {
+                        user.sendMessage(Text.of("[ Position saved is in a different dimension ]"));
+                    }
                 }
             }
         }
