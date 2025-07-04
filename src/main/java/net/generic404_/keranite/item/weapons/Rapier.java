@@ -52,7 +52,7 @@ public class Rapier extends SwordItem {
             if (hasVanish) {
                 user.setVelocity(0, 0.2, 0);
                 user.addVelocity(user.getRotationVector().multiply(new Vec3d(1, 0, 1).multiply(-1)));
-                user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 40, 0, false, true, false));
+                user.addStatusEffect(new StatusEffectInstance(ModEffects.VANISHING, 50, 0, false, true, true));
                 user.getItemCooldownManager().set(this, 250);
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,0.6f,0.8f);
                 world.playSoundFromEntity(null,user, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.PLAYERS,1.2f,0.9f);

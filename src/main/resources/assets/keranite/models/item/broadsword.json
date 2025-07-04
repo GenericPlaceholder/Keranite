@@ -6,15 +6,9 @@
   "overrides": [
     {
       "predicate": {
-        "custom_model_data": 0
-      },
-      "model": "keranite:item/broadsword_handheld"
-    },
-    {
-      "predicate": {
         "custom_model_data": 1
       },
-      "model": "keranite:item/broadsword_handheld_charged"
+      "model": "keranite:item/broadsword_gui_charged"
     }
   ]
 }

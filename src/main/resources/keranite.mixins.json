@@ -13,6 +13,9 @@
   "client": [
     "NoSprint",
     "Vanish",
+    "itemRendering.bigToSmall.ItemRendererAccessor",
+    "itemRendering.bigToSmall.ItemRendererMixin",
+    "itemRendering.bigToSmall.ModelLoaderMixin",
     "nameHider.hideUUID"
   ]
 }

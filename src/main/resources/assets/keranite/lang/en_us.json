@@ -56,6 +56,8 @@
   "effect.keranite.shocked.description": "Shakes your camera and your character, as well as making you weaker and slower.",
   "effect.keranite.vanishing": "Vanishing",
   "effect.keranite.vanishing.description": "Makes your character, armor, and held items completely invisible.",
+  "effect.keranite.warping": "Warping",
+  "effect.keranite.warping.description": "Effect given when trying to use a Callback Token.",
 
   "block.keranite.keranite_block": "Keranite Block",
   "block.keranite.keranite_ore": "Keranite Ore"

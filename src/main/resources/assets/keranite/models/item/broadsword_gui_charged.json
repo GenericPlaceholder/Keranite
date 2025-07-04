@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "keranite:item/rapier_gui"
+    "layer0": "keranite:item/broadsword_gui_charged"
   }
 }
