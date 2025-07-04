@@ -49,9 +49,13 @@
   "death.attack.shockwave.player": "%1$s was killed by %2$s's shockwave.",
 
   "effect.keranite.obfuscated": "Obfuscated",
+  "effect.keranite.obfuscated.description": "Obfuscates your name, making you unidentifiable.",
   "effect.keranite.charged": "Charged",
+  "effect.keranite.charged.description": "Prevents sprinting, using shields, or flying with an elytra.",
   "effect.keranite.shocked": "Shocked",
+  "effect.keranite.shocked.description": "Shakes your camera and your character, as well as making you weaker and slower.",
   "effect.keranite.vanishing": "Vanishing",
+  "effect.keranite.vanishing.description": "Makes your character, armor, and held items completely invisible.",
 
   "block.keranite.keranite_block": "Keranite Block",
   "block.keranite.keranite_ore": "Keranite Ore"

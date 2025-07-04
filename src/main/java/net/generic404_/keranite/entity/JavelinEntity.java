@@ -19,6 +19,7 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -108,12 +109,12 @@ public class JavelinEntity extends TridentEntity {
     protected void onBlockHit(BlockHitResult blockHitResult) {
 //        this.discard();
         boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, javelinStack)>0;
-        if(hasShockwave){
-            SpecialUtil.createShockwave(getWorld(), blockHitResult.getBlockPos().toCenterPos(), 4, 2,4.5);
+        if(hasShockwave && this.getWorld() instanceof ServerWorld serverWorld){
+            SpecialUtil.createShockwave(serverWorld, blockHitResult.getBlockPos().toCenterPos(), 4, 2,4);
         }
         boolean hasMagnet = EnchantmentHelper.getLevel(ModEnchantments.MAGNETIZED, javelinStack)>0;
-        if(hasMagnet){
-            SpecialUtil.createShockwave(getWorld(), blockHitResult.getBlockPos().toCenterPos(), 4, 2,-3);
+        if(hasMagnet && this.getWorld() instanceof ServerWorld serverWorld){
+            SpecialUtil.createShockwave(serverWorld, blockHitResult.getBlockPos().toCenterPos(), 4, 2,-3);
         }
         super.onBlockHit(blockHitResult);
     }
@@ -123,12 +124,12 @@ public class JavelinEntity extends TridentEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
 //        this.discard();
         boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, javelinStack)>0;
-        if(hasShockwave){
-            SpecialUtil.createShockwave(getWorld(), entityHitResult.getEntity().getPos(), 4, 2,3);
+        if(hasShockwave && this.getWorld() instanceof ServerWorld serverWorld){
+            SpecialUtil.createShockwave(serverWorld, entityHitResult.getPos(), 4, 2,4);
         }
         boolean hasMagnet = EnchantmentHelper.getLevel(ModEnchantments.MAGNETIZED, javelinStack)>0;
-        if(hasMagnet){
-            SpecialUtil.createShockwave(getWorld(), entityHitResult.getEntity().getPos(), 4, 2,-3);
+        if(hasMagnet && this.getWorld() instanceof ServerWorld serverWorld){
+            SpecialUtil.createShockwave(serverWorld, entityHitResult.getPos(), 4, 2,-3);
         }
         boolean hasGust = EnchantmentHelper.getLevel(ModEnchantments.GUST, javelinStack)>0;
         if(hasGust){

@@ -3,12 +3,10 @@ package net.generic404_.keranite.item.weapons;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
-import net.generic404_.keranite.damagetype.ModDamageTypes;
 import net.generic404_.keranite.enchantment.ModEnchantments;
 import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
-import net.generic404_.keranite.util.NearbyUtil;
+import net.generic404_.keranite.util.SpecialUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -25,7 +23,6 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class Broadsword extends SwordItem {
@@ -54,6 +51,7 @@ public class Broadsword extends SwordItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         boolean hasConduct = EnchantmentHelper.getLevel(ModEnchantments.CONDUCTOR, user.getStackInHand(hand)) > 0;
         boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, user.getStackInHand(hand)) > 0;
+        boolean hasMagnetized = EnchantmentHelper.getLevel(ModEnchantments.MAGNETIZED, user.getStackInHand(hand)) > 0;
         if (hasConduct) {
             NbtCompound tag = user.getStackInHand(hand).getOrCreateNbt();
             int maxmeter = 10;
@@ -65,23 +63,20 @@ public class Broadsword extends SwordItem {
             }
         } else if(hasShockwave) {
             user.setVelocity(new Vec3d(0,0.75,0));
-            ArrayList<Entity> entityList = NearbyUtil.getByLivingEntity(user,5,user.getBlockPos());
-            for(Entity ent : entityList){
-                ent.damage(ModDamageTypes.of(world, ModDamageTypes.SHOCKWAVE), 3);
-                ent.addVelocity(new Vec3d(0,0.5,0));
-                ent.addVelocity(((ent.getPos().subtract(user.getPos())).multiply(6-user.distanceTo(ent))).multiply(0.15));
-            }
             user.fallDistance = -5;
             if(world instanceof ServerWorld serverWorld){
-                serverWorld.playSoundFromEntity(null,user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS,1f,0.8f);
-                serverWorld.playSoundFromEntity(null,user, SoundEvents.ENTITY_DRAGON_FIREBALL_EXPLODE, SoundCategory.PLAYERS,0.8f,1f);
-                serverWorld.playSoundFromEntity(null,user, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS,0.6f,1.4f);
-                serverWorld.spawnParticles(ParticleTypes.EXPLOSION.getType(), user.getX(), user.getY(), user.getZ(), 10, 0, 0, 0, 0);
-                serverWorld.spawnParticles(ParticleTypes.ASH.getType(), user.getX(), user.getY(), user.getZ(), 100, 5, 3, 5, 0.2);
+                SpecialUtil.createShockwave(serverWorld, user.getPos(), 5, 3, 5, user);
             }
             user.getItemCooldownManager().set(this, 80);
             return TypedActionResult.consume(user.getStackInHand(hand));
-        } else {
+        } else if(hasMagnetized) {
+            if(world instanceof ServerWorld serverWorld){
+                SpecialUtil.createShockwave(serverWorld, user.getPos(), 5, 0, -5, user);
+            }
+            user.getItemCooldownManager().set(this, 80);
+            return TypedActionResult.consume(user.getStackInHand(hand));
+        }
+        else {
             user.setVelocity(user.getRotationVector().multiply(new Vec3d(-1, 0, -1)));
             user.addVelocity(0,0.2,0);
             user.fallDistance = -3;
