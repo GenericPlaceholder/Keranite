@@ -18,6 +18,6 @@ public class Shockwave extends Enchantment {
     }
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
-        return stack.isOf(ModItems.BROADSWORD)||stack.isOf(ModItems.VERYBROADSWORD)||stack.isOf(ModItems.JAVELIN);
+        return stack.isOf(ModItems.BROADSWORD)||stack.isOf(ModItems.JAVELIN);
     }
 }

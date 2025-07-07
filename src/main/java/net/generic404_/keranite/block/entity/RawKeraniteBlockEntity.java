@@ -2,12 +2,11 @@ package net.generic404_.keranite.block.entity;
 
 import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.block.ModBlocks;
-import net.generic404_.keranite.block.RawKeranite;
+import net.generic404_.keranite.block.RawKeraniteBlock;
 import net.generic404_.keranite.util.NearbyUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -21,8 +20,7 @@ import java.util.ArrayList;
 
 public class RawKeraniteBlockEntity extends BlockEntity {
     public RawKeraniteBlockEntity(BlockPos pos, BlockState state) {
-        //super(CustomBlockEntities.RAW_KERANITE_BLOCK_ENTITY_TYPE, pos, state);
-        super(BlockEntityType.FURNACE, pos, state);
+        super(CustomBlockEntities.RAW_KERANITE_BLOCK_ENTITY, pos, state);
     }
 
     int heat = 0;
@@ -98,7 +96,7 @@ public class RawKeraniteBlockEntity extends BlockEntity {
             }
             writeNbt(new NbtCompound());
             if (!(heat==0&&smelted)) {
-                world.setBlockState(pos, state.with(RawKeranite.HEAT, heat).with(RawKeranite.SMELTED, smelted));
+                world.setBlockState(pos, state.with(RawKeraniteBlock.HEAT, heat).with(RawKeraniteBlock.SMELTED, smelted));
             }
 
             if(surroundingTemp!=0){

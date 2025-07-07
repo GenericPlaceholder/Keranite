@@ -47,47 +47,62 @@ public class Broadsword extends SwordItem {
         return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getAttributeModifiers(slot);
     }
 
+    public TypedActionResult<ItemStack> conduct(PlayerEntity user, Hand hand){
+        NbtCompound tag = user.getStackInHand(hand).getOrCreateNbt();
+        int maxmeter = 10;
+        if(!tag.getBoolean("charged") &&tag.getInt("meter")>=maxmeter) {
+            tag.putBoolean("charged", true);
+            return TypedActionResult.consume(user.getStackInHand(hand));
+        }else{
+            return TypedActionResult.pass(user.getStackInHand(hand));
+        }
+    }
+
+    public TypedActionResult<ItemStack> shockwave(World world, PlayerEntity user, Hand hand){
+        user.setVelocity(new Vec3d(0,0.75,0));
+        user.fallDistance = -5;
+        if(world instanceof ServerWorld serverWorld){
+            SpecialUtil.createShockwave(serverWorld, user.getPos(), 5, 3, 5, user);
+        }
+        user.getItemCooldownManager().set(this, 80);
+        return TypedActionResult.consume(user.getStackInHand(hand));
+    }
+
+    public TypedActionResult<ItemStack> magnet(World world, PlayerEntity user, Hand hand){
+        if(world instanceof ServerWorld serverWorld){
+            SpecialUtil.createShockwave(serverWorld, user.getPos(), 5, 0, -5, user);
+        }
+        user.getItemCooldownManager().set(this, 80);
+        return TypedActionResult.consume(user.getStackInHand(hand));
+    }
+
+    public TypedActionResult<ItemStack> backdash(World world, PlayerEntity user, Hand hand){
+        user.setVelocity(user.getRotationVector().multiply(new Vec3d(-1, 0, -1)));
+        user.addVelocity(0,0.2,0);
+        user.fallDistance = -3;
+
+        if(world instanceof ServerWorld serverWorld) {
+            serverWorld.playSoundFromEntity(null, user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS, 0.6f, 0.8f);
+            serverWorld.spawnParticles(ParticleTypes.CLOUD.getType(), user.getX(), user.getY(), user.getZ(), 5, 0,0,0,0.01);
+        }
+
+        user.getItemCooldownManager().set(this, 30);
+        return TypedActionResult.consume(user.getStackInHand(hand));}
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         boolean hasConduct = EnchantmentHelper.getLevel(ModEnchantments.CONDUCTOR, user.getStackInHand(hand)) > 0;
         boolean hasShockwave = EnchantmentHelper.getLevel(ModEnchantments.SHOCKWAVE, user.getStackInHand(hand)) > 0;
         boolean hasMagnetized = EnchantmentHelper.getLevel(ModEnchantments.MAGNETIZED, user.getStackInHand(hand)) > 0;
         if (hasConduct) {
-            NbtCompound tag = user.getStackInHand(hand).getOrCreateNbt();
-            int maxmeter = 10;
-            if(!tag.getBoolean("charged") &&tag.getInt("meter")>=maxmeter) {
-                tag.putBoolean("charged", true);
-                return TypedActionResult.consume(user.getStackInHand(hand));
-            }else{
-                return TypedActionResult.pass(user.getStackInHand(hand));
-            }
+            return conduct(user,hand);
         } else if(hasShockwave) {
-            user.setVelocity(new Vec3d(0,0.75,0));
-            user.fallDistance = -5;
-            if(world instanceof ServerWorld serverWorld){
-                SpecialUtil.createShockwave(serverWorld, user.getPos(), 5, 3, 5, user);
-            }
-            user.getItemCooldownManager().set(this, 80);
-            return TypedActionResult.consume(user.getStackInHand(hand));
+            return shockwave(world, user, hand);
         } else if(hasMagnetized) {
-            if(world instanceof ServerWorld serverWorld){
-                SpecialUtil.createShockwave(serverWorld, user.getPos(), 5, 0, -5, user);
-            }
-            user.getItemCooldownManager().set(this, 80);
-            return TypedActionResult.consume(user.getStackInHand(hand));
+            return magnet(world,user,hand);
         }
         else {
-            user.setVelocity(user.getRotationVector().multiply(new Vec3d(-1, 0, -1)));
-            user.addVelocity(0,0.2,0);
-            user.fallDistance = -3;
-
-            if(world instanceof ServerWorld serverWorld) {
-                serverWorld.playSoundFromEntity(null, user, SoundEvents.BLOCK_SAND_PLACE, SoundCategory.PLAYERS, 0.6f, 0.8f);
-                serverWorld.spawnParticles(ParticleTypes.CLOUD.getType(), user.getX(), user.getY(), user.getZ(), 5, 0,0,0,0.01);
-            }
-
-            user.getItemCooldownManager().set(this, 30);
-            return TypedActionResult.consume(user.getStackInHand(hand));
+            return backdash(world, user, hand);
         }
     }
 }

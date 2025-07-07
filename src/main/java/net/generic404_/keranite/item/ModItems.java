@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.generic404_.keranite.Keranite;
-import net.generic404_.keranite.item.toolmaterials.KeraniteToolMaterial;
 import net.generic404_.keranite.item.usable.CallbackToken;
 import net.generic404_.keranite.item.usable.DisposableCallbackToken;
 import net.generic404_.keranite.item.usable.MinorAnchor;
@@ -29,7 +28,7 @@ public class ModItems {
 
 	public static final Item BROADSWORD = registerItem("broadsword", new Broadsword(new Item.Settings().fireproof()));
 	public static final Item RAPIER = registerItem("rapier", new Rapier(new Item.Settings().fireproof()));
-	public static final Item VERYBROADSWORD = registerItem("verybroadsword", new Verybroadsword(KeraniteToolMaterial.KERANITE, 15, -3.3f, new Item.Settings()));
+	public static final Item VERYBROADSWORD = registerItem("verybroadsword", new Verybroadsword(new Item.Settings()));
 	public static final Item JAVELIN = registerItem("javelin",new Javelin(new Item.Settings().fireproof()));
 
 	public static final Item LIGHT_HELMET = registerItem("light_helmet", new ArmorItem(KeraniteArmorMaterials.LIGHT, ArmorItem.Type.HELMET, new FabricItemSettings()));

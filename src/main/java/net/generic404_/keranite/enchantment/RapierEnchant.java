@@ -7,8 +7,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class Vanish extends Enchantment {
-    public Vanish() {
+public class RapierEnchant extends Enchantment {
+    public RapierEnchant() {
         super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
@@ -16,6 +16,7 @@ public class Vanish extends Enchantment {
     public int getMinPower(int level) {
         return 1;
     }
+
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
         return stack.isOf(ModItems.RAPIER);
