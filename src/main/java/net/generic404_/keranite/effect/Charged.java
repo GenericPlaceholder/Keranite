@@ -3,8 +3,6 @@ package net.generic404_.keranite.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 
 public class Charged extends StatusEffect {
     protected Charged(StatusEffectCategory category, int color) {
@@ -21,7 +19,6 @@ public class Charged extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         assert entity.isAlive();
-        entity.disablesShield();
 
         if(entity.isFallFlying()){
             if(entity.getVelocity().y<=0) {
@@ -31,6 +28,5 @@ public class Charged extends StatusEffect {
                 entity.setVelocity(0,0,0);
             }
         }
-        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,5,0,false,false,false));
     }
 }

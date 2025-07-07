@@ -1,6 +1,12 @@
 package net.generic404_.keranite.item.weapons;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.generic404_.keranite.util.SpecialUtil;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -12,6 +18,15 @@ import net.minecraft.world.World;
 public class Verybroadsword extends Broadsword {
     public Verybroadsword(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
+        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
+        builder.putAll(super.getAttributeModifiers(slot));
+        builder.put(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier(ATTACK_REACH_MODIFIER_UUID, "Weapon Modifier", 2d, EntityAttributeModifier.Operation.ADDITION));
+        builder.put(ReachEntityAttributes.REACH, new EntityAttributeModifier(REACH_MODIFIER_UUID, "Weapon Modifier", 3d, EntityAttributeModifier.Operation.ADDITION));
+        return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getAttributeModifiers(slot);
     }
 
     @Override

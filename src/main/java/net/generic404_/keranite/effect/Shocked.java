@@ -4,8 +4,6 @@ import net.generic404_.keranite.util.RandomUtil;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 
 public class Shocked extends StatusEffect {
     protected Shocked(StatusEffectCategory category, int color) {
@@ -33,12 +31,6 @@ public class Shocked extends StatusEffect {
                     entity.isOnGround() ? 0 : RandomUtil.getRandomFloat(min,max)/85,
                     RandomUtil.getRandomFloat(min,max)/75
             );
-
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 2,1,false,false,false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,2,0,false,false,false));
-        }else {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 2,2,false,false,false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,2,2,false,false,false));
         }
     }
 }

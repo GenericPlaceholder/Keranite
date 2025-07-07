@@ -64,7 +64,9 @@ public class Rapier extends SwordItem {
                 ArrayList<Entity> nearbyEntities = NearbyUtil.getByLivingEntity(user,8,user.getBlockPos());
                 Vec3d movementvec = user.getRotationVector().multiply(2);
                 for(Entity ent : nearbyEntities){
-                    ent.setVelocity(movementvec);
+                    ent.setOnGround(false);
+                    ent.setVelocity(new Vec3d(0,0.05,0));
+                    ent.addVelocity(movementvec);
                 }
                 user.getItemCooldownManager().set(this, 150);
                 return TypedActionResult.success(user.getStackInHand(hand),true);

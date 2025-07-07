@@ -28,7 +28,7 @@ public abstract class ShorterFollowRange {
     private double vanish(double original, Entity entity) {
         if (entity != null) {
             if(entity instanceof LivingEntity livent&&livent.hasStatusEffect(ModEffects.VANISHING)){
-                return original / 5;
+                return 0;
             }
         }
         return original;

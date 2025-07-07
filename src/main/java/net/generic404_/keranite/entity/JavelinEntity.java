@@ -130,6 +130,8 @@ public class JavelinEntity extends TridentEntity {
         }
         boolean hasGust = EnchantmentHelper.getLevel(ModEnchantments.GUST, javelinStack)>0;
         if(hasGust){
+            entityHitResult.getEntity().setOnGround(false);
+            entityHitResult.getEntity().addVelocity(new Vec3d(0,0.05,0));
             entityHitResult.getEntity().addVelocity(Objects.requireNonNull(this.getOwner()).getRotationVector().multiply(3));
             entityHitResult.getEntity().timeUntilRegen = 20;
         }

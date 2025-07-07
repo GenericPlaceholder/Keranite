@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "keranite",
-	"version": "0.17.4-1.20.1-beta",
+	"version": "0.17.5-1.20.1-beta",
 	"name": "Keranite",
 	"description": "Adds Keranite, a new material which can not only reinforce netherite armor, but also be used for brand new armor and weaponry.",
 	"authors": [

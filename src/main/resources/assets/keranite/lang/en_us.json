@@ -33,7 +33,7 @@
   "enchantment.keranite.discharge": "Discharge",
   "enchantment.keranite.discharge.desc": "When striking an entity, additional damage is dealt to surrounding entities of the same type.",
   "enchantment.keranite.vanish": "Vanish",
-  "enchantment.keranite.vanish.desc": "Replaces your forward dash with a backwards dash, and makes you (and your armor) fully invisible for a second and a half afterwards.",
+  "enchantment.keranite.vanish.desc": "Replaces your forward dash with a backwards dash, and makes you (and your armor) fully invisible for two seconds and a half afterwards.",
   "enchantment.keranite.shockwave": "Shockwave",
   "enchantment.keranite.shockwave.desc": "Replaces your backdash with a powerful shockwave.",
   "enchantment.keranite.gust": "Gust",
@@ -42,6 +42,8 @@
   "enchantment.keranite.force.desc": "Adds extra damage based on total speed.",
   "enchantment.keranite.lunge": "Lunge",
   "enchantment.keranite.lunge.desc": "Allows you to perform a \"lunge\", which is basically just weaker riptide for when you're on land.",
+  "enchantment.keranite.magnetized": "Magnetized",
+  "enchantment.keranite.magnetized.desc": "Inverts knockback when hitting an entity. When used on a broadsword, changes backdash to an ability which pulls nearby entities in.",
 
   "death.attack.discharged": "%1$s couldn't handle the electrical discharge.",
   "death.attack.discharged.player": "%1$s couldn't handle %2$s's electrical discharge.",
