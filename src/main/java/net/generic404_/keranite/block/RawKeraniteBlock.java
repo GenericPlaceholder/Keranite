@@ -10,6 +10,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,6 +28,11 @@ public class RawKeraniteBlock extends BlockWithEntity implements BlockEntityProv
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(HEAT);
         builder.add(SMELTED);
+    }
+
+    @Override
+    public BlockState getAppearance(BlockState state, BlockRenderView renderView, BlockPos pos, Direction side, @Nullable BlockState sourceState, @Nullable BlockPos sourcePos) {
+        return ModBlocks.RAW_KERANITE_BLOCK.getDefaultState();
     }
 
     @Override

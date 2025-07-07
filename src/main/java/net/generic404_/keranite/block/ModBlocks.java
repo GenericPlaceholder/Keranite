@@ -3,10 +3,10 @@ package net.generic404_.keranite.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.generic404_.keranite.Keranite;
+import net.generic404_.keranite.item.block.RawKeraniteBlockItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.Instrument;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -24,7 +24,7 @@ public class ModBlocks {
 
     private static Item registerBlockItem(String name, Block block){
         return Registry.register(Registries.ITEM, new Identifier(Keranite.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings()));
+                new RawKeraniteBlockItem(block, new FabricItemSettings()));
     }
 
     public static void registerModBlocks() {
