@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 250,
+  "experience": 5.0,
+  "group": "keranite",
+  "ingredient": {
+    "item": "keranite:raw_keranite"
+  },
+  "result": "keranite:keranite_ingot"
+}

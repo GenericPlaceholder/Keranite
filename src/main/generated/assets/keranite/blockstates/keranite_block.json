@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "keranite:block/keranite_block"
+    }
+  }
+}

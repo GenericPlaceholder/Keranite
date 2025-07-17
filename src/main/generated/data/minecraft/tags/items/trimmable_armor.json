@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "keranite:light_helmet",
+    "keranite:light_chestplate",
+    "keranite:light_leggings",
+    "keranite:light_boots",
+    "keranite:heavy_helmet",
+    "keranite:heavy_chestplate",
+    "keranite:heavy_leggings",
+    "keranite:heavy_boots"
+  ]
+}

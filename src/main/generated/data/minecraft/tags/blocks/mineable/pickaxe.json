@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "keranite:keranite_block",
+    "keranite:keranite_ore",
+    "keranite:odd_endstone"
+  ]
+}

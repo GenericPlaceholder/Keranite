@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "keranite:keranite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "keranite:keranite_ingot"
+  }
+}

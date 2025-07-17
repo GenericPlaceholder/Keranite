@@ -1,0 +1,4 @@
+// 1.20.1	2025-07-16T23:45:54.9139983	Keranite/Tags for minecraft:block
+883de8fd99418fdd9001af545184535cd4f706a7 data/minecraft/tags/blocks/mineable/pickaxe.json
+883de8fd99418fdd9001af545184535cd4f706a7 data/minecraft/tags/blocks/needs_diamond_tool.json
+fb2399f78674858470b17a79d463d572c0417211 data/minecraft/tags/blocks/beacon_base_blocks.json
