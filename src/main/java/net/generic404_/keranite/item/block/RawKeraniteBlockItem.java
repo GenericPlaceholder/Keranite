@@ -1,6 +1,7 @@
 package net.generic404_.keranite.item.block;
 
 import net.generic404_.keranite.Keranite;
+import net.generic404_.keranite.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
@@ -22,8 +23,10 @@ public class RawKeraniteBlockItem extends BlockItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
-        tooltip.add(Text.translatable(Util.createTranslationKey("block", new Identifier(Keranite.MOD_ID, "raw_keranite_block.requires"))).formatted(Formatting.GRAY,Formatting.ITALIC));
-        tooltip.add(Text.translatable(Util.createTranslationKey("block", new Identifier(Keranite.MOD_ID, "raw_keranite_block.suggests"))).formatted(Formatting.GRAY,Formatting.ITALIC));
-        tooltip.add(Text.translatable(Util.createTranslationKey("block", new Identifier(Keranite.MOD_ID, "raw_keranite_block.disclaimer"))).formatted(Formatting.GRAY,Formatting.ITALIC));
+        if (stack.isOf(ModBlocks.ODD_ENDSTONE.asItem())) {
+            tooltip.add(Text.translatable(Util.createTranslationKey("block", new Identifier(Keranite.MOD_ID, "odd_endstone.requires"))).formatted(Formatting.GRAY, Formatting.ITALIC));
+            tooltip.add(Text.translatable(Util.createTranslationKey("block", new Identifier(Keranite.MOD_ID, "odd_endstone.suggests"))).formatted(Formatting.GRAY, Formatting.ITALIC));
+            tooltip.add(Text.translatable(Util.createTranslationKey("block", new Identifier(Keranite.MOD_ID, "odd_endstone.disclaimer"))).formatted(Formatting.GRAY, Formatting.ITALIC));
+        }
     }
 }

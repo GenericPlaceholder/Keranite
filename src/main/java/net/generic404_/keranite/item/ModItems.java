@@ -53,10 +53,15 @@ public class ModItems {
 		entries.add(RAW_KERANITE);
 	}
 	private static void addItemsToTabCom(FabricItemGroupEntries entries){
-		entries.add(CALLBACK_TOKEN);
-		entries.add(DISPOSABLE_CALLBACK_TOKEN);
 		entries.add(BROADSWORD);
 		entries.add(RAPIER);
+	}
+	private static void addItemsToTabTools(FabricItemGroupEntries entries){
+		entries.add(CALLBACK_TOKEN);
+		entries.add(DISPOSABLE_CALLBACK_TOKEN);
+	}
+	private static void addItemsToTabOp(FabricItemGroupEntries entries) {
+		entries.add(VERYBROADSWORD);
 	}
 
 	private static Item registerItem(String name, Item item){
@@ -66,5 +71,7 @@ public class ModItems {
 	public static void registerModItems(){
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToTabIng);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToTabCom);
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToTabTools);
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(ModItems::addItemsToTabOp);
 	}
 }

@@ -32,7 +32,7 @@ public class RawKeraniteBlock extends BlockWithEntity implements BlockEntityProv
 
     @Override
     public BlockState getAppearance(BlockState state, BlockRenderView renderView, BlockPos pos, Direction side, @Nullable BlockState sourceState, @Nullable BlockPos sourcePos) {
-        return ModBlocks.RAW_KERANITE_BLOCK.getDefaultState();
+        return ModBlocks.ODD_ENDSTONE.getDefaultState();
     }
 
     @Override

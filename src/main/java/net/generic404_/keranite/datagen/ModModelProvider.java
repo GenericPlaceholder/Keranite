@@ -18,7 +18,6 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KERANITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.KERANITE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_KERANITE_BLOCK);
     }
 
     @Override

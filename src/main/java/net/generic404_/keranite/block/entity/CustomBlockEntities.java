@@ -13,7 +13,7 @@ public class CustomBlockEntities {
     public static final BlockEntityType<RawKeraniteBlockEntity> RAW_KERANITE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Keranite.MOD_ID, "raw_keranite_be"),
                     FabricBlockEntityTypeBuilder.create(RawKeraniteBlockEntity::new,
-                            ModBlocks.RAW_KERANITE_BLOCK).build());
+                            ModBlocks.ODD_ENDSTONE).build());
 
     public static void initialize() {}
 }

@@ -64,8 +64,8 @@
   "block.keranite.keranite_block": "Keranite Block",
   "block.keranite.keranite_ore": "Keranite Ore",
 
-  "block.keranite.raw_keranite_block": "Raw Keranite Block",
-  "block.keranite.raw_keranite_block.requires": "Needs to be heated up, and then cooled, while placed.",
-  "block.keranite.raw_keranite_block.suggests": "Maybe placing hot or cold blocks next to it would do something...",
-  "block.keranite.raw_keranite_block.disclaimer": "(Disclaimer: Only works with Vanilla blocks!)"
+  "block.keranite.odd_endstone": "Odd Endstone",
+  "block.keranite.odd_endstone.requires": "Needs to be heated up, and then cooled, while placed.",
+  "block.keranite.odd_endstone.suggests": "Maybe placing hot or cold blocks next to it would do something...",
+  "block.keranite.odd_endstone.disclaimer": "(Disclaimer: Only works with Vanilla blocks!)"
 }

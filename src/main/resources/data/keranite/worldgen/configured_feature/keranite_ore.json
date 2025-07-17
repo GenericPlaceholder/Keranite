@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "keranite:keranite_ore"
+          "Name": "keranite:odd_endstone"
         },
         "target": {
           "block": "minecraft:end_stone",

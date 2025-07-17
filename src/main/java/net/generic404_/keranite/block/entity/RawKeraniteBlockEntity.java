@@ -1,25 +1,18 @@
 package net.generic404_.keranite.block.entity;
 
-import net.generic404_.keranite.Keranite;
 import net.generic404_.keranite.block.ModBlocks;
 import net.generic404_.keranite.block.RawKeraniteBlock;
-import net.generic404_.keranite.util.NearbyUtil;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
 
 public class RawKeraniteBlockEntity extends BlockEntity {
     private static final Direction[] directions = Direction.values();
@@ -134,11 +127,9 @@ public class RawKeraniteBlockEntity extends BlockEntity {
                 heat += surroundingTemp;
             }
             if(heat==120&&!smelted){
-                Keranite.LOGGER.info("those who smelt");
                 smelted = true;
             }else if(heat==0&&smelted){
-                Keranite.LOGGER.info("those who ModBlocks.KERANITE_BLOCK.getDefaultState()");
-                sworld.setBlockState(pos, ModBlocks.KERANITE_BLOCK.getDefaultState());
+                sworld.setBlockState(pos, ModBlocks.KERANITE_ORE.getDefaultState());
                 sworld.removeBlockEntity(pos);
             }
             writeNbt(new NbtCompound());
@@ -146,14 +137,14 @@ public class RawKeraniteBlockEntity extends BlockEntity {
                 sworld.setBlockState(pos, state.with(RawKeraniteBlock.HEAT, heat).with(RawKeraniteBlock.SMELTED, smelted));
             }
 
-            if(surroundingTemp!=0){
-                ArrayList<Entity> NearbyEntities = NearbyUtil.getByWorld(world,50,pos);
-                for(Entity entity : NearbyEntities){
-                    if(entity instanceof PlayerEntity player){
-                        player.sendMessage(Text.of("Heat: " + heat + ", smelted: " + smelted));
-                    }
-                }
-            }
+//            if(surroundingTemp!=0){
+//                ArrayList<Entity> NearbyEntities = NearbyUtil.getByWorld(world,50,pos);
+//                for(Entity entity : NearbyEntities){
+//                    if(entity instanceof PlayerEntity player){
+//                        player.sendMessage(Text.of("Heat: " + heat + ", smelted: " + smelted));
+//                    }
+//                }
+//            }+
 
             markDirty(sworld,pos,state);
         }
